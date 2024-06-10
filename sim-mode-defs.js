@@ -1718,11 +1718,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
  sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.01,0.1,0.2,0.3,true))*3*tropicalness;
  }
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
-    if (lnd < 0.6 && sys.organization < 3 && moisture >= 0.5) {
-     if (!(sys.pressure >= 1013)) {
-         sys.pressure <= 1012; // Or any value below 1013 that you want to set it to
-     }
- }
+    
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
