@@ -1692,7 +1692,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     
     let targetWarmCore = (lnd ?
         sys.lowerWarmCore :
-        max(pow(map(SST,24,28.5,0,1,true),3),sys.lowerWarmCore)
+        max(pow(map(SST,24,28,0,1,true),3),sys.lowerWarmCore)
     )*map(jet,0,75,sq(1-sys.depth),1,true);
     sys.lowerWarmCore = lerp(sys.lowerWarmCore,targetWarmCore,sys.lowerWarmCore>targetWarmCore ? map(jet,0,75,0.4,0.06,true) : 0.04);
     sys.upperWarmCore = lerp(sys.upperWarmCore,sys.lowerWarmCore,sys.lowerWarmCore>sys.upperWarmCore ? 0.05 : 0.4);
@@ -1717,6 +1717,8 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
  else if (!lnd && moisture < 0.5) {
  sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.01,0.05,0.1,0.2,true))*3*tropicalness;
  }
+
+
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
     
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
@@ -1724,6 +1726,8 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2);
     sys.organization -= map(moisture,0,1,6,1,true)*shear;
+
+
 if (moisture <= 0) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 25;
 }
