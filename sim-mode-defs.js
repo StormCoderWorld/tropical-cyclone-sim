@@ -1702,21 +1702,21 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     let nontropicalness = constrain(map(sys.lowerWarmCore,0.75,0,0,1),0,1);
 
     sys.organization *= 100;
-if (!lnd && moisture >= 0.8) {
-      sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.5,0.75,1,1.5,true))*3*tropicalness;
-  }
-else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
-sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.25,0.5,0.7,1,true))*3*tropicalness;
-}
-else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
-sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.12,0.25,0.5,0.7,true))*3*tropicalness;
-}
-else if (!lnd && moisture >= 0.5 && moisture < 0.6) {
-sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.01,0.12,0.25,0.35,true))*3*tropicalness;
-}
-else if (!lnd && moisture >= 0.4 && moisture < 0.5) {
-sys.organization += sq(map(SST,20,26,28,29.5,31,0,0,0.01,0.07,0.14,true))*3*tropicalness;
-}
+    if(!lnd && moisture >= 0.8) {
+         sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.8,1,1.5,2,true))*3*tropicalness;
+     }
+ else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
+ sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.5,0.6,1,1.5,true))*3*tropicalness;
+ }
+ else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
+ sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.3,0.4,0.8,1,true))*3*tropicalness;
+ }
+ else if (!lnd && moisture >= 0.5 && moisture < 0.6) {
+ sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.15,0.2,0.4,0.6,true))*3*tropicalness;
+ }
+ else if (!lnd && moisture < 0.5) {
+ sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.01,0.1,0.2,0.3,true))*3*tropicalness;
+ }
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
     if (lnd < 0.6 && sys.organization < 3 && moisture >= 0.5) {
      if (!(sys.pressure >= 1013)) {
