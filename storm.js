@@ -330,12 +330,14 @@ class Storm{
                     forecastTracks.vertex(p1.x + rVec.x, p1.y + rVec.y);
                     rVec.rotate(PI);
                     forecastTracks.vertex(p1.x + rVec.x, p1.y + rVec.y);
-                    forecastTracks.endShape();
-                }
+                    forecastTracks.endShape(); 
+                };
+
                 
                 forecastTracks.erase(128, 0);
                 forecastTracks.rect(0, 0, WIDTH, HEIGHT);
                 forecastTracks.noErase();
+
             }
         }
     }
