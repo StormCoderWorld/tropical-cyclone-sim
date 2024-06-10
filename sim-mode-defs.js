@@ -98,7 +98,7 @@ SPAWN_RULES[SIM_MODE_Deluge] = {};
 SPAWN_RULES.defaults.archetypes = {
     'tw': {
         x: ()=>random(0,WIDTH-1),
-        y: (b)=>b.hemY(random(HEIGHT*0.7,HEIGHT*0.9)),
+        y: (b)=>b.hemY(random(HEIGHT*0.665,HEIGHT*0.915)),
         pressure: [990,995,1000,1005,1010],
         windSpeed: [15, 20, 25, 30, 35],
         type: TROPWAVE,
