@@ -98,9 +98,9 @@ SPAWN_RULES[SIM_MODE_Deluge] = {};
 SPAWN_RULES.defaults.archetypes = {
     'tw': {
         x: ()=>random(0,WIDTH-1),
-        y: (b)=>b.hemY(random(HEIGHT*0.665,HEIGHT*0.915)),
-        pressure: [990,995,1000,1005,1010],
-        windSpeed: [15, 20, 25, 30, 35],
+        y: (b)=>b.hemY(random(HEIGHT*0.665,HEIGHT*0.915)), // this is the latitudes at which storms spawn, so for example the current latitude max is 70 so tropical waves currently form between 25 - 8 of the equator.
+        pressure: [1000,1005,1010],
+        windSpeed: [ 20, 30, 35],
         type: TROPWAVE,
         organization: [0.5,1.0,1.5,2.0,2.5],
         lowerWarmCore: 1,
@@ -1198,7 +1198,7 @@ ENV_DEFS[SIM_MODE_NorthernHemisphere].SST = {
         offSeasonPolarTemp: -5,
         peakSeasonPolarTemp: 3,
         offSeasonTropicsTemp: 27.4,
-        peakSeasonTropicsTemp: 29.7
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_SouthernHemisphere].SST = {
@@ -1703,7 +1703,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
     sys.organization *= 100;
     if(!lnd && moisture >= 0.8) {
-         sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.4,0.75,1,2,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.4,0.75,1,2,true))*3*tropicalness;
      }
  else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
  sys.organization += sq(map(SST,20,26,28,29.5,31,0,0.2,0.4,0.75,1,true))*3*tropicalness;
@@ -1831,7 +1831,7 @@ else if (moisture >= 0.6 && moisture <0.62) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.8;
 }
 else if (moisture >= 0.62 && moisture <0.65) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.01;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1;
 }
 else if (moisture >= 0.65 && moisture <0.68) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.14;
@@ -1873,7 +1873,7 @@ else if (moisture >= 0.9 && moisture <0.93) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 3.15;
 }
 else if (moisture >= 0.93 && moisture <0.95) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 3.32;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 3.33;
 }
 else if (moisture >= 0.95 && moisture <0.98) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 3.4;
@@ -1881,7 +1881,7 @@ else if (moisture >= 0.95 && moisture <0.98) {
 else if (moisture >= 0.98 && moisture <1) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 3.55;
 }
-else if (moisture >= 1) {
+else if (moisture = 1) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 3.6;
 }
 
