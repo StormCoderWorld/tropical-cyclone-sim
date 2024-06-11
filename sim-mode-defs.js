@@ -111,7 +111,7 @@ SPAWN_RULES.defaults.archetypes = {
         x: ()=>random(0,WIDTH-1),
         y: (b,x)=>b.hemY(b.env.get("jetstream",x,0,b.tick)+random(-75,75)),
         pressure: [980, 995, 1005, 1010],
-        windSpeed: [15, 30, 45, 60],
+        windSpeed: [10, 20, 30, 40],
         type: EXTROP,
         organization: 0,
         lowerWarmCore: 0,
@@ -983,7 +983,7 @@ let extreme = color(0,100,100)
         let moderate = color(180,100,100);
         let weak = color(270,100,100);
         let c;
-        if(v < 2.5)
+        if(v < 2)
             c = lerpColor(weak, moderate, map(v,1,2,0,1));
         else if(v < 4)
             c = lerpColor(moderate, strong, map(v,2,4,0,1));
@@ -1151,8 +1151,8 @@ ENV_DEFS.defaults.SST = {
     },
     oceanic: true,
     modifiers: {
-        offSeasonPolarTemp: -11,
-        peakSeasonPolarTemp: 11,
+        offSeasonPolarTemp: -5,
+        peakSeasonPolarTemp: 5,
         offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 29.1
     }
@@ -1188,8 +1188,8 @@ ENV_DEFS[SIM_MODE_EXPERIMENTAL].SST = {
     modifiers: {
         offSeasonPolarTemp: 20,
         peakSeasonPolarTemp: 22,
-        offSeasonTropicsTemp: 26,
-        peakSeasonTropicsTemp: 28
+        offSeasonTropicsTemp: 27,
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_NorthernHemisphere].SST = {
@@ -1720,7 +1720,11 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
 
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
-    
+    if (lnd < 0.65 && sys.organization < 5 && moisture >= 0.5) {
+        if (!(sys.pressure >= 1013)) {
+            sys.pressure = 1012; // Or any value below 1013 that you want to set it to
+        }
+    }
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
@@ -1800,7 +1804,7 @@ else if (moisture >= 0.37 && moisture < 0.4) {
 else if (moisture >= 0.4 && moisture < 0.415) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.68;
 }
- else if (moisture >= 0.415 && moisture < 0.5) {
+ else if (moisture >= 0.415 && moisture < 0.43) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.52;
 }
 else if (moisture >= 0.43 && moisture < 0.45) {
@@ -1816,10 +1820,10 @@ else if (moisture >= 0.48 && moisture < 0.5) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.6;
 }
 else if (moisture >= 0.5 && moisture < 0.53) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.35;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.15;
 }
 else if (moisture >= 0.53 && moisture < 0.56) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.25;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.25;
 }
 else if (moisture >= 0.56 && moisture < 0.58) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.5;
@@ -1881,7 +1885,7 @@ else if (moisture >= 0.95 && moisture <0.98) {
 else if (moisture >= 0.98 && moisture <1) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 3.55;
 }
-else if (moisture = 1) {
+else if (moisture >= 1) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 3.6;
 }
 

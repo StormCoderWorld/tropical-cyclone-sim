@@ -1,14 +1,14 @@
 
 const TITLE = "Tropical Cyclone Simulator";
-const VERSION_NUMBER = "0.6.3";
+const VERSION_NUMBER = "0.6.31";
 
 
 const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
 const EARLIEST_COMPATIBLE_FORMAT = 0;
 const ENVDATA_COMPATIBLE_FORMAT = 0;
 
-const WIDTH = 1400; // 2:1 aspect ratio
-const HEIGHT = 700;
+const WIDTH = 1080; // 2:1 aspect ratio
+const HEIGHT = 540;
 const DIAMETER = 20;    // Storm icon diameter
 const PERLIN_ZOOM = 100;    // Resolution for perlin noise
 const TICK_DURATION = 3600000;  // How long in sim time does a tick last in milliseconds (1 hour)
@@ -64,8 +64,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         landBiasFactors: [
             5/8,
             -0.3,
-            -0.3,
-            0.15
+            -0.05,
+            0.3
         ],
         optionPresets: {
             designations: 22
@@ -76,9 +76,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         form: "linear",
         landBiasFactors: [
             1/2,
-            0.15,
-            -0.2,
-            -0.7
+            0.3,
+            0.08,
+            -0.4
         ],
         optionPresets: {
             designations: 22
@@ -90,8 +90,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         landBiasFactors: [
             1/2,
             -0.08,
-            -0.58,
-            -0.98
+            -0.28,
+            -0.58
         ],
         optionPresets: {
             designations: 22
@@ -140,8 +140,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         optionPresets: {
             hem: 1,
             scale: 0,
-            designations: 0,
-SIMULATION_MODES : 9
+            designations: 0
+
 
         }
     },
@@ -156,8 +156,8 @@ SIMULATION_MODES : 9
         optionPresets: {
             hem: 1,
             scale: 0,
-            designations: 1,
-SIMULATION_MODES : 12
+            designations: 1
+
         }
     },
 {   
@@ -171,8 +171,8 @@ SIMULATION_MODES : 12
         optionPresets: {
             hem: 1,
             scale: 0,
-            designations: 0,
-SIMULATION_MODES : 9
+            designations: 0
+
 
         }
     },
@@ -188,8 +188,8 @@ SIMULATION_MODES : 9
         optionPresets: {
             hem: 1,
             scale: 3,
-            designations: 3,
-SIMULATION_MODES : 14
+            designations: 3
+
 
         }
     },
@@ -204,8 +204,8 @@ SIMULATION_MODES : 14
         optionPresets: {
             hem: 1,
             scale: 0,
-            designations: 2,
-SIMULATION_MODES : 13
+            designations: 2
+
 
         }
     },
@@ -220,8 +220,8 @@ SIMULATION_MODES : 13
         optionPresets: {
             hem: 1,
             scale: 3,
-            designations: 3,
-SIMULATION_MODES : 15
+            designations: 3
+
 
         }
     },
@@ -237,8 +237,8 @@ SIMULATION_MODES : 15
         optionPresets: {
             hem: 1,
             scale: 3,
-            designations: 3,
-SIMULATION_MODES : 13
+            designations: 3
+
 
         }
     },
@@ -253,8 +253,8 @@ SIMULATION_MODES : 13
         optionPresets: {
             hem: 1,
             scale: 4,
-            designations: 5,
-SIMULATION_MODES : 17
+            designations: 5
+
 
         }
     },
@@ -269,8 +269,8 @@ SIMULATION_MODES : 17
         optionPresets: {
             hem: 1,
             scale: 4,
-            designations: 5,
-SIMULATION_MODES : 17
+            designations: 5
+
 
         }
     },
@@ -286,8 +286,8 @@ SIMULATION_MODES : 17
         optionPresets: {
             hem: 1,
             scale: 3,
-            designations: 3,
-SIMULATION_MODES : 5
+            designations: 3
+
 
         }
     },
@@ -303,8 +303,8 @@ SIMULATION_MODES : 5
         optionPresets: {
             hem: 2,
             scale: 2,
-            designations: 6,
-SIMULATION_MODES : 19
+            designations: 6
+
 
         }
     },
@@ -319,8 +319,8 @@ SIMULATION_MODES : 19
         optionPresets: {
             hem: 2,
             scale: 2,
-            designations: 7,
-SIMULATION_MODES : 16
+            designations: 7
+
 
         }
     },
@@ -335,8 +335,8 @@ SIMULATION_MODES : 16
         optionPresets: {
             hem: 2,
             scale: 5,
-            designations: 8,
-SIMULATION_MODES : 18
+            designations: 8
+
 
         }
     },
@@ -351,8 +351,8 @@ SIMULATION_MODES : 18
         optionPresets: {
             hem: 2,
             scale: 5,
-            designations: 8,
-SIMULATION_MODES : 18
+            designations: 8
+
 
         }
     },
@@ -367,8 +367,8 @@ SIMULATION_MODES : 18
         optionPresets: {
             hem: 2,
             scale: 5,
-            designations: 8,
-SIMULATION_MODES : 6
+            designations: 8
+
 
         }
     },
@@ -383,8 +383,8 @@ SIMULATION_MODES : 6
         optionPresets: {
             hem: 2,
             scale: 0,
-            designations: 9,
-SIMULATION_MODES : 10
+            designations: 9
+
 
         }
     },
@@ -399,8 +399,8 @@ SIMULATION_MODES : 10
         optionPresets: {
             hem: 2,
             scale: 0,
-            designations: 9,
-SIMULATION_MODES : 6
+            designations: 9
+
 
         }
     },
@@ -416,8 +416,8 @@ SIMULATION_MODES : 6
         optionPresets: {
             hem: 2,
             scale: 0,
-            designations: 9,
-SIMULATION_MODES : 6
+            designations: 9
+
 
         }
     },
@@ -433,8 +433,8 @@ SIMULATION_MODES : 6
         optionPresets: {
             hem: 1,
             scale: 0,
-            designations: 10,
-SIMULATION_MODES : 11
+            designations: 10
+
 
         }
     }
