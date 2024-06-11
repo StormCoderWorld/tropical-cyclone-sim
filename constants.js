@@ -543,9 +543,9 @@ function defineColors(){    // Since p5 color() function doesn't work until setu
     COLORS.land.push([0.7, color(212, 201, 8)]);
     COLORS.land.push([0.65, color(147, 191, 13)]);
     COLORS.land.push([0.6, color(89, 168, 89)]);
-    COLORS.land.push([0.55, color(77, 189, 60)]);
-    COLORS.land.push([0.53, color(8,207,25)]);
- COLORS.land.push([0.515, color(1, 87, 15)]);
+    COLORS.land.push([0.56, color(77, 189, 60)]);
+    COLORS.land.push([0.54, color(8,207,25)]);
+ COLORS.land.push([0.52, color(1, 87, 15)]);
     COLORS.land.push([0.5, color(9, 130, 106)]);
     COLORS.snow = color(240);
     COLORS.outBasin = color(45,70,120);
