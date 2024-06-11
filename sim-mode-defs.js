@@ -562,9 +562,9 @@ modifiers: {
 ENV_DEFS[SIM_MODE_NorthAtlantic].jetstream = {
 modifiers: {
         peakLat: 0.30,
-        antiPeakLat: 0.5,
+        antiPeakLat: 0.4,
         peakRange: 0.3,
-        antiPeakRange: 0.40
+        antiPeakRange: 0.30
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].jetstream = {

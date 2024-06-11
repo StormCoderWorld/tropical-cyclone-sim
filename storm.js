@@ -311,7 +311,7 @@ class Storm{
                 let rVec = createVector(0);
                 let r0 = 0;
                 let r1 = 0.01;
-                for(let hour of [12, 24, 36, 48, 60, 72, 96, 120]){
+                for(let hour of [12, 24, 36, 48, 60, 72, 96, 120, 144, 168]){
                     const n = hour / ADVISORY_TICKS - 1;
                     r0 = r1;
                     r1 = hour * 0.7 / 2;
@@ -334,7 +334,7 @@ class Storm{
                 };
 
                 
-                forecastTracks.erase(128, 0);
+                forecastTracks.erase(256, 0);
                 forecastTracks.rect(0, 0, WIDTH, HEIGHT);
                 forecastTracks.noErase();
 
