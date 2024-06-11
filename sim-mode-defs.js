@@ -1884,7 +1884,9 @@ else if (moisture >= 0.95 && moisture <0.98) {
 else if (moisture >= 0.98 && moisture <= 1) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.5;
 }
-
+sys.organization -= pow(1.3,24-SST)*tropicalness;
+sys.organization = constrain(sys.organization,0,100);
+sys.organization /= 100;
 
     let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,25,30,1,2,true))/log(1.17);
     targetPressure = lerp(1010,targetPressure,pow(sys.organization,3));
