@@ -1404,7 +1404,7 @@ ENV_DEFS.defaults.moisture = {
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
         let m = map(l,0.6,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
-        m += map(s,-1.4,1,-0.08,0.08);
+        m += map(s,-2.4,1,-0.08,0.08);
         m += map(v,0,1,-0.3,0.3);
         m = constrain(m,0,1);
         return m;
@@ -1703,10 +1703,10 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
     sys.organization *= 100;
     if(!lnd && moisture >= 0.8) {
- sys.organization += sq(map(SST,20,29,31,0,0.75,1.5,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,29,31,0,0.75,1.2,true))*3*tropicalness;
      }
  else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
- sys.organization += sq(map(SST,20,29,31,0,0.6,1.2,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,29,31,0,0.6,1,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
  sys.organization += sq(map(SST,20,29,31,0,0.3,0.6,true))*3*tropicalness;
@@ -1735,16 +1735,16 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
 
  if (moisture >= 0 && moisture < 0.02) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 4.5;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 8.5;
 }
 else if (moisture >= 0.02 && moisture < 0.04) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 4.25;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 6.25;
 }
 else if (moisture >= 0.04 && moisture < 0.06) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 4;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 5.5;
 }
 else if (moisture >= 0.06 && moisture < 0.08) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 3.85;
+    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 4;
 }
 else if (moisture >= 0.08 && moisture < 0.09) {
     sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 3.6;
@@ -1897,7 +1897,7 @@ sys.organization /= 100;
     sys.pressure += 0.5*sys.interaction.shear/(1+map(sys.lowerWarmCore,0,1,4,0,true));
     sys.pressure += map(jet,0,75,5*pow(1-sys.depth,4),0,true);
 
-    let targetWind = map(sys.pressure, 1004, 920, 35, 140,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
+    let targetWind = map(sys.pressure, 1010, 920, 20, 150,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.05);
 
 
