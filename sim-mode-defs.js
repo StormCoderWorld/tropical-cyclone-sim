@@ -562,9 +562,9 @@ modifiers: {
 ENV_DEFS[SIM_MODE_NorthAtlantic].jetstream = {
 modifiers: {
         peakLat: 0.30,
-        antiPeakLat: 0.4,
-        peakRange: 0.3,
-        antiPeakRange: 0.30
+        antiPeakLat: 0.5,
+        peakRange: 0.4,
+        antiPeakRange: 0.50
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].jetstream = {
@@ -753,12 +753,12 @@ ENV_DEFS.defaults.LLSteering = {
         westerlyMax: 20,
         ridgingJetstreamEffectRange: 0.4,
         tradesRidgingEffectRange: 0.4,
-        tradesMax: 3.25,
+        tradesMax: 3,
         tradesAngleEquator: 17*Math.PI/16,
         tradesAngle: 511*Math.PI/512,
         noiseBase: 1.6,
         noiseExponentMin: -8,
-        noiseExponentMax: 4
+        noiseExponentMax: 5
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].LLSteering = {};
@@ -782,8 +782,8 @@ ENV_DEFS[SIM_MODE_WILD].LLSteering = {
         return u.vec;
     },
     modifiers: {
-        noiseExponentMin: -6,
-        noiseExponentMax: 6
+        noiseExponentMin: -4,
+        noiseExponentMax: 4
     }
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].LLSteering = {};
@@ -868,15 +868,15 @@ ENV_DEFS.defaults.ULSteering = {
         jetstreamOverpowerBase: 0.7,
         jetstreamInwardAngle: Math.PI/4,
         troughBase: 1.5,
-        troughExponentMin: -4,
-        troughExponentMax: 4,
+        troughExponentMin: -5,
+        troughExponentMax: 5,
         troughAngle: -Math.PI/16,
-        hadleyUpperBound: 4,
-        hadleyLowerBound: 1,
+        hadleyUpperBound: 5,
+        hadleyLowerBound: 2,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
-        noiseExponentMin: -5,
+        noiseExponentMin: -8,
         noiseExponentMax: 5
     },
     noiseChannels: [
@@ -984,11 +984,11 @@ let extreme = color(0,100,100)
         let weak = color(270,100,100);
         let c;
         if(v < 2)
-            c = lerpColor(weak, moderate, map(v,1,2,0,1));
+            c = lerpColor(weak, moderate, map(v,0,2,0,1));
         else if(v < 4)
             c = lerpColor(moderate, strong, map(v,2,4,0,1));
 else 
-c = lerpColor(strong, extreme, map(v,4,8,0,1));
+c = lerpColor(strong, extreme, map(v,4,6,0,1));
         colorMode(RGB);
         return c;
     }
@@ -1464,35 +1464,35 @@ ENV_DEFS[SIM_MODE_NorthernHemisphere].moisture = {
 ENV_DEFS[SIM_MODE_SouthernHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.1,
-        tropicalMoisture: 0.62,
+        tropicalMoisture: 0.72,
         mountainMoisture: 0.11
     }
 };
 ENV_DEFS[SIM_MODE_WesternHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.62,
+        tropicalMoisture: 0.72,
         mountainMoisture: 0.12
     }
 };
 ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.62,
+        tropicalMoisture: 0.72,
         mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.62,
+        tropicalMoisture: 0.65,
         mountainMoisture: 0.06
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.27,
-        tropicalMoisture: 0.55,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.1
     }
 };
@@ -1506,84 +1506,84 @@ ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
 ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.64,
+        tropicalMoisture: 0.7,
         mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
     modifiers: {
         polarMoisture: 0.30,
-        tropicalMoisture: 0.61,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.20
     }
 };
 ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.36,
-        tropicalMoisture: 0.72,
+        tropicalMoisture: 0.76,
         mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.65,
+        tropicalMoisture: 0.7,
         mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_SouthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.33,
-        tropicalMoisture: 0.6,
+        tropicalMoisture: 0.64,
         mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_NorthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.34,
-        tropicalMoisture: 0.68,
+        tropicalMoisture: 0.76,
         mountainMoisture: 0.07
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.33,
-        tropicalMoisture: 0.66,
+        tropicalMoisture: 0.72,
         mountainMoisture: 0.1
     }
 };
 ENV_DEFS[SIM_MODE_Australian].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.64,
+        tropicalMoisture: 0.68,
         mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_WarmerEarth2C].moisture = {
     modifiers: {
         polarMoisture: 0.37,
-        tropicalMoisture: 0.74,
+        tropicalMoisture: 0.84,
         mountainMoisture: 0.13
     }
 };
 ENV_DEFS[SIM_MODE_PreIndustrial].moisture = {
     modifiers: {
         polarMoisture: 0.3,
-        tropicalMoisture: 0.6,
+        tropicalMoisture: 0.7,
         mountainMoisture: 0.07
     }
 };
 ENV_DEFS[SIM_MODE_MiniIceAge].moisture = {
     modifiers: {
         polarMoisture: 0.17,
-        tropicalMoisture: 0.48,
+        tropicalMoisture: 0.68,
         mountainMoisture: 0.01
     }
 };
 ENV_DEFS[SIM_MODE_Earth4C].moisture = {
     modifiers: {
         polarMoisture: 0.4,
-        tropicalMoisture: 0.8,
+        tropicalMoisture: 0.9,
         mountainMoisture: 0.2
     }
 };
@@ -1597,14 +1597,14 @@ ENV_DEFS[SIM_MODE_SnowballEarth].moisture = {
 ENV_DEFS[SIM_MODE_Drought].moisture = {
     modifiers: {
         polarMoisture: 0.27,
-        tropicalMoisture: 0.55,
+        tropicalMoisture: 0.65,
         mountainMoisture: 0.02
     }
 };
 ENV_DEFS[SIM_MODE_Deluge].moisture = {
     modifiers: {
         polarMoisture: 0.45,
-        tropicalMoisture: 0.85,
+        tropicalMoisture: 0.91,
         mountainMoisture: 0.35
     }
 };
@@ -1703,26 +1703,26 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
     sys.organization *= 100;
     if(!lnd && moisture >= 0.8) {
- sys.organization += sq(map(SST,20,31,0,1.6,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,29,31,0,0.75,1.5,true))*3*tropicalness;
      }
  else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
- sys.organization += sq(map(SST,20,31,0,0.8,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,29,31,0,0.6,1.2,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
- sys.organization += sq(map(SST,20,31,0,0.6,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,29,31,0,0.3,0.6,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.5 && moisture < 0.6) {
- sys.organization += sq(map(SST,20,31,0,0.4,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,29,31,0,0.1,0.3,true))*3*tropicalness;
  }
  else if (!lnd && moisture < 0.5) {
- sys.organization += sq(map(SST,20,31,0,0.2,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0,0,true))*3*tropicalness;
  }
 
 
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
 
-    if (lnd < 0.6 && moisture >= 0.5) {
-        if (!(sys.pressure > 1013)) {
+    if (moisture >= 0.5) {
+        if (!(sys.pressure < 1013)) {
             sys.pressure = 1013; // Or any value below 1013 that you want to set it to
         }
     }
@@ -1730,7 +1730,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2,true);
-    sys.organization -= map(moisture,0,1,4,0,true)*shear;
+    sys.organization -= map(moisture,0,0.8,5,1,true)*shear;
 
 
 
@@ -1828,58 +1828,58 @@ else if (moisture >= 0.56 && moisture < 0.58) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.5;
 }
 else if (moisture >= 0.58 && moisture < 0.6) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.55;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.64;
 }
 else if (moisture >= 0.6 && moisture <0.62) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.58;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.7;
 }
 else if (moisture >= 0.62 && moisture <0.65) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.65;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.77;
 }
 else if (moisture >= 0.65 && moisture <0.68) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.74;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.83;
 }
 else if (moisture >= 0.68 && moisture <0.7) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.88;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.91;
 }
 else if (moisture >= 0.7 && moisture <0.72) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1;
 }
 else if (moisture >= 0.72 && moisture <0.74) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.1;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.25;
 }
 else if (moisture >= 0.74 && moisture <0.75) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.2;
-}
-else if (moisture >= 0.75 && moisture <0.77) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.4;
 }
-else if (moisture >= 0.77 && moisture <0.8) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.55;
-}
-else if (moisture >= 0.8 && moisture <0.82) {
+else if (moisture >= 0.75 && moisture <0.77) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.6;
 }
+else if (moisture >= 0.77 && moisture <0.8) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.75;
+}
+else if (moisture >= 0.8 && moisture <0.82) {
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.82;
+}
 else if (moisture >= 0.82 && moisture <0.84) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.76;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.96;
 }
 else if (moisture >= 0.84 && moisture <0.86) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.85;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.03;
 }
 else if (moisture >= 0.86 && moisture <0.88) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.9;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.12;
 }
 else if (moisture >= 0.88 && moisture <0.9) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.94;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.18;
 }
 else if (moisture >= 0.9 && moisture <0.93) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.24;
 }
 else if (moisture >= 0.93 && moisture <0.95) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.13;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.33;
 }
 else if (moisture >= 0.95 && moisture <0.98) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.22;
+    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.442;
 }
 else if (moisture >= 0.98 && moisture <= 1) {
     sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.5;

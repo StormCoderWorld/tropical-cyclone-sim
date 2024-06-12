@@ -1,6 +1,6 @@
 
 const TITLE = "Tropical Cyclone Simulator";
-const VERSION_NUMBER = "0.6.31";
+const VERSION_NUMBER = "0.6.4";
 
 
 const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
@@ -64,7 +64,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         landBiasFactors: [
             5/8,
             -0.3,
-            -0.05,
+            -0.10,
             0.3
         ],
         optionPresets: {
@@ -77,7 +77,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         landBiasFactors: [
             1/2,
             0.3,
-            0.08,
+            -0.14,
             -0.4
         ],
         optionPresets: {
