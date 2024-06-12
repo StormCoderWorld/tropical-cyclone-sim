@@ -1,6 +1,6 @@
 
 const TITLE = "Tropical Cyclone Simulator";
-const VERSION_NUMBER = "0.6.4";
+const VERSION_NUMBER = "0.6.41";
 
 
 const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
@@ -541,12 +541,16 @@ function defineColors(){    // Since p5 color() function doesn't work until setu
     COLORS.land.push([0.8, color(163, 82, 22)]);
     COLORS.land.push([0.75, color(191, 140, 17)]);
     COLORS.land.push([0.7, color(212, 201, 8)]);
-    COLORS.land.push([0.65, color(147, 191, 13)]);
+    COLORS.land.push([0.68, color(197, 198, 13)]);
+    COLORS.land.push([0.64, color(167, 190, 25)]);
+    COLORS.land.push([0.64, color(147, 181, 43)]);
+    COLORS.land.push([0.62, color(100, 173, 65)]);
     COLORS.land.push([0.6, color(89, 168, 89)]);
+    COLORS.land.push([0.58, color(83, 175, 74)]);
     COLORS.land.push([0.56, color(77, 189, 60)]);
     COLORS.land.push([0.54, color(8,207,25)]);
  COLORS.land.push([0.52, color(1, 87, 15)]);
-    COLORS.land.push([0.5, color(9, 130, 106)]);
+    COLORS.land.push([0.51, color(9, 130, 106)]);
     COLORS.snow = color(240);
     COLORS.outBasin = color(45,70,120);
     COLORS.subBasinOutline = color(255,255,0);
