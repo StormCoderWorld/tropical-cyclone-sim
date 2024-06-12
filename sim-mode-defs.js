@@ -1034,7 +1034,7 @@ ENV_DEFS.defaults.SSTAnomaly = {
         v = log(v);
         let r;
         if(u.modifiers.r!==undefined) r = u.modifiers.r;
-        else r = map(y,0,HEIGHT,0,3);
+        else r = map(y,0,HEIGHT,0,5);
         v = -r*v;
         v = v*i;
         if(u.modifiers.bigBlobBase!==undefined && v>u.modifiers.bigBlobExponentThreshold) v += pow(u.modifiers.bigBlobBase,v-u.modifiers.bigBlobExponentThreshold)-1;
@@ -1055,8 +1055,8 @@ ENV_DEFS.defaults.SSTAnomaly = {
         let cNeutral = color(200,100,100);
         let hNeutral = color(65,100,100);
         let c;
-        if(v<0) c = lerpColor(cold,cNeutral,map(v,-7,0,0,1));
-        else c = lerpColor(hNeutral,hot,map(v,0,7,0,1));
+        if(v<0) c = lerpColor(cold,cNeutral,map(v,-5,0,0,1));
+        else c = lerpColor(hNeutral,hot,map(v,0,5,0,1));
         colorMode(RGB);
         return c;
     },
@@ -1113,7 +1113,7 @@ ENV_DEFS.defaults.SST = {
         if(y<0) return 0;
         let anom = u.field('SSTAnomaly');
         let s = seasonalSine(z);
-        let w = map(cos(map(x,0,WIDTH, 3*-PI/4, 2*PI)),-1,1,0.275,0.825);
+        let w = map(cos(map(x,0,WIDTH, 3*-PI/4, 2*PI)),-1,1,0,0.865);
         let h0 = y/HEIGHT;
         let h1 = (sqrt(h0)+h0)/2;
         let h2 = sqrt(sqrt(h0));
@@ -1897,8 +1897,8 @@ sys.organization /= 100;
     sys.pressure += 0.5*sys.interaction.shear/(1+map(sys.lowerWarmCore,0,1,4,0,true));
     sys.pressure += map(jet,0,75,5*pow(1-sys.depth,4),0,true);
 
-    let targetWind = map(sys.pressure,1013,900,10,155,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
-    sys.windSpeed = lerp(sys.windSpeed,targetWind,0.15);
+    let targetWind = map(sys.pressure, 1004, 920, 35, 140,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
+    sys.windSpeed = lerp(sys.windSpeed,targetWind,0.05);
 
 
     let targetDepth = map(
@@ -1907,7 +1907,7 @@ sys.organization /= 100;
         1,map(
             sys.organization,
             0,1,
-            sys.depth*pow(0.95,shear),max(map(sys.pressure,1010,950,0,0.7,true),sys.depth)
+            sys.depth*pow(0.95,shear),max(map(sys.pressure,1010, 920, 0, 1, true),sys.depth)
         )
     );
     sys.depth = lerp(sys.depth,targetDepth,0.05);
