@@ -163,7 +163,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 {   
 		label: "Northeast Pacific North Atlantic Combo",
         form: 'earth',
-        west: -180,
+        west: -140,
         east: 15,
         north: 70,
         south: 0,
