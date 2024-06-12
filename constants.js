@@ -308,6 +308,23 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 
         }
     },
+ {   
+		label: "South Pacific",
+        form: 'earth',
+        west: 100,
+        east: -120,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.spac,
+        optionPresets: {
+            hem: 2,
+            scale: 2,
+            designations: 7
+
+
+        }
+    },
+
     {   
 		label: "Entire South Pacific",
         form: 'earth',
@@ -315,7 +332,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         east: -77.29,
         north: 0,
         south: -70,
-        mainSubBasin: EARTH_SB_IDS.spac,
+        mainSubBasin: EARTH_SB_IDS.shem,
         optionPresets: {
             hem: 2,
             scale: 2,
