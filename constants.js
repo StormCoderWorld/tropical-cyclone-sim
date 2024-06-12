@@ -164,7 +164,7 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
 		label: "Northeast Pacific North Atlantic Combo",
         form: 'earth',
         west: -140,
-        east: 15,
+        east: 36,
         north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.nhem,
