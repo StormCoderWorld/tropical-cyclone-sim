@@ -100,7 +100,7 @@ SPAWN_RULES.defaults.archetypes = {
         x: ()=>random(0,WIDTH-1),
         y: (b)=>b.hemY(random(HEIGHT*0.58,HEIGHT*0.92)), // this is the latitudes at which storms spawn, so for example the current latitude max is 70 so tropical waves currently form between 25 - 8 of the equator.
         pressure: [1000,1005,1010],
-        windSpeed: [ 20, 30, 35],
+        windSpeed: [ 10, 20, 30],
         type: TROPWAVE,
         organization: [0.5,1.0,1.5,2.0,2.5],
         lowerWarmCore: 1,
@@ -1457,7 +1457,7 @@ ENV_DEFS[SIM_MODE_EXPERIMENTAL].moisture = {};
 ENV_DEFS[SIM_MODE_NorthernHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.62,
+        tropicalMoisture: 0.72,
         mountainMoisture: 0.10
     }
 };
@@ -1485,7 +1485,7 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.65,
+        tropicalMoisture: 0.72,
         mountainMoisture: 0.06
     }
 };
@@ -1506,35 +1506,35 @@ ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
 ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.7,
+        tropicalMoisture: 0.8,
         mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
     modifiers: {
         polarMoisture: 0.30,
-        tropicalMoisture: 0.6,
+        tropicalMoisture: 0.65,
         mountainMoisture: 0.20
     }
 };
 ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.36,
-        tropicalMoisture: 0.76,
+        tropicalMoisture: 0.8,
         mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.7,
+        tropicalMoisture: 0.75,
         mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_SouthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.33,
-        tropicalMoisture: 0.64,
+        tropicalMoisture: 0.74,
         mountainMoisture: 0.15
     }
 };
@@ -1555,7 +1555,7 @@ ENV_DEFS[SIM_MODE_SouthIndianOcean].moisture = {
 ENV_DEFS[SIM_MODE_Australian].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.68,
+        tropicalMoisture: 0.74,
         mountainMoisture: 0.05
     }
 };
@@ -1569,7 +1569,7 @@ ENV_DEFS[SIM_MODE_WarmerEarth2C].moisture = {
 ENV_DEFS[SIM_MODE_PreIndustrial].moisture = {
     modifiers: {
         polarMoisture: 0.3,
-        tropicalMoisture: 0.7,
+        tropicalMoisture: 0.72,
         mountainMoisture: 0.07
     }
 };
@@ -1722,8 +1722,8 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
 
     if (moisture >= 0.5) {
-        if (!(sys.pressure < 1013)) {
-            sys.pressure = 1013; // Or any value below 1013 that you want to set it to
+        if (!(sys.pressure < 1012)) {
+            sys.pressure = 1012; // Or any value below 1013 that you want to set it to
         }
     }
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
@@ -1897,10 +1897,44 @@ sys.organization /= 100;
     sys.pressure += 0.5*sys.interaction.shear/(1+map(sys.lowerWarmCore,0,1,4,0,true));
     sys.pressure += map(jet,0,75,5*pow(1-sys.depth,4),0,true);
 
-    let targetWind = map(sys.pressure, 1010, 920, 20, 150,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
+    let targetWind = map(sys.pressure, 1010, 900, 25, 170,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.05);
-
-
+if (moisture < 0.6) {
+    if (!(sys.windSpeed < 40)) {
+        sys.windSpeed = 40; // Or any value below 1013 that you want to set it to
+    } else if  (moisture >= 0.6 && moisture < 0.625) {
+        if (!(sys.windSpeed < 45)) {
+            sys.windSpeed = 45; // Or any value below 1013 that you want to set it to
+        } 
+    } else if (moisture >= 0.625 && moisture < 0.65) {
+        if (!(sys.windSpeed < 52)) {
+            sys.windSpeed = 55; // Or any value below 1013 that you want to set it to
+        } 
+    } else if (moisture >= 0.65 && moisture < 0.675) {
+        if (!(sys.windSpeed < 60)) {
+            sys.windSpeed = 64; // Or any value below 1013 that you want to set it to
+    } 
+} } else if  (moisture >= 0.675 && moisture < 0.7) {
+    if (!(sys.windSpeed < 75)) {
+        sys.windSpeed = 74; // Or any value below 1013 that you want to set it to
+    } 
+} else if (moisture >= 0.7 && moisture < 0.725) {
+    if (!(sys.windSpeed < 96)) {
+        sys.windSpeed = 96; // Or any value below 1013 that you want to set it to
+    } 
+} else if (moisture >= 0.725 && moisture < 0.75) {
+    if (!(sys.windSpeed < 104)) {
+        sys.windSpeed = 105; // Or any value below 1013 that you want to set it to
+} else if (moisture >= 0.75 && moisture < 0.775) {
+    if (!(sys.windSpeed < 112)) {
+        sys.windSpeed = 112; // Or any value below 1013 that you want to set it to
+    } 
+} else if (moisture >= 0.775 && moisture < 0.8) {
+    if (!(sys.windSpeed < 140)) {
+        sys.windSpeed = 140; // Or any value below 1013 that you want to set it to
+} 
+}
+}
     let targetDepth = map(
         sys.upperWarmCore,
         0,1,
@@ -1912,7 +1946,7 @@ sys.organization /= 100;
     );
     sys.depth = lerp(sys.depth,targetDepth,0.05);
 
-    if(sys.pressure > 1013 || sys.interaction.kill > 0)
+    if(sys.pressure > 1025 || sys.interaction.kill > 0)
         sys.kill = true;
     console.log('Initial values:', {
         organization: sys.organization,
