@@ -1897,7 +1897,7 @@ sys.organization /= 100;
     sys.pressure += 0.5*sys.interaction.shear/(1+map(sys.lowerWarmCore,0,1,4,0,true));
     sys.pressure += map(jet,0,75,5*pow(1-sys.depth,4),0,true);
 
-    let targetWind = map(sys.pressure, 1010, 900, 25, 170,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
+    let targetWind = map(sys.pressure, 990, 900, 64, 180,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.05);
 if (moisture < 0.6) {
     if (!(sys.windSpeed < 40)) {
