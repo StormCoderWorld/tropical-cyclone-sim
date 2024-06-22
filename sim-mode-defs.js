@@ -1113,7 +1113,7 @@ ENV_DEFS.defaults.SST = {
         if(y<0) return 0;
         let anom = u.field('SSTAnomaly');
         let s = seasonalSine(z);
-        let w = map(cos(map(x,0,WIDTH, 3*-PI/4, 2*PI)),-1,1,0,0.865);
+        let w = map(cos(map(x,0,WIDTH, 3*-PI/4, 2*PI)),-1,1,0,1);
         let h0 = y/HEIGHT;
         let h1 = (sqrt(h0)+h0)/2;
         let h2 = sqrt(sqrt(h0));
@@ -1232,9 +1232,9 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -7,
-        peakSeasonPolarTemp: 8,
-        offSeasonTropicsTemp: 27.85,
-        peakSeasonTropicsTemp: 30.2
+        peakSeasonPolarTemp: 5,
+        offSeasonTropicsTemp: 27,
+        peakSeasonTropicsTemp: 30
 
     }
 };
@@ -1261,7 +1261,7 @@ ENV_DEFS[SIM_MODE_EasternPacific].SST = {
     modifiers: {
         offSeasonPolarTemp: -6,
         peakSeasonPolarTemp: 10,
-        offSeasonTropicsTemp: 27,
+        offSeasonTropicsTemp: 27.5,
         peakSeasonTropicsTemp: 29.7
     }
 };
@@ -1270,8 +1270,8 @@ ENV_DEFS[SIM_MODE_CentralPacific].SST = {
     modifiers: {
         offSeasonPolarTemp: -3,
         peakSeasonPolarTemp: 2,
-        offSeasonTropicsTemp: 27.7,
-        peakSeasonTropicsTemp: 29.3
+        offSeasonTropicsTemp: 26.5,
+        peakSeasonTropicsTemp: 29
     }
 };
 ENV_DEFS[SIM_MODE_WesternPacific].SST = {
@@ -1280,7 +1280,7 @@ ENV_DEFS[SIM_MODE_WesternPacific].SST = {
         offSeasonPolarTemp: -8,
         peakSeasonPolarTemp: 8.5,
         offSeasonTropicsTemp: 28.1,
-        peakSeasonTropicsTemp: 30.2
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].SST = {
@@ -1288,8 +1288,8 @@ ENV_DEFS[SIM_MODE_NorthPacific].SST = {
     modifiers: {
         offSeasonPolarTemp: -7.5,
         peakSeasonPolarTemp: 8,
-        offSeasonTropicsTemp: 28,
-        peakSeasonTropicsTemp: 30.3
+        offSeasonTropicsTemp: 27.5,
+        peakSeasonTropicsTemp: 29.5
     }
 };
 ENV_DEFS[SIM_MODE_SouthPacific].SST = {
@@ -1297,7 +1297,7 @@ ENV_DEFS[SIM_MODE_SouthPacific].SST = {
     modifiers: {
         offSeasonPolarTemp: -8,
         peakSeasonPolarTemp: -2,
-        offSeasonTropicsTemp: 27.4,
+        offSeasonTropicsTemp: 27.5,
         peakSeasonTropicsTemp: 29.3
     }
 };
@@ -1306,8 +1306,8 @@ ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
     modifiers: {
         offSeasonPolarTemp: -5,
         peakSeasonPolarTemp: 7,
-        offSeasonTropicsTemp: 28.3,
-        peakSeasonTropicsTemp: 29.7
+        offSeasonTropicsTemp: 28,
+        peakSeasonTropicsTemp: 29.4
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
@@ -1315,8 +1315,8 @@ ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
     modifiers: {
         offSeasonPolarTemp: -8,
         peakSeasonPolarTemp: -2.5,
-        offSeasonTropicsTemp: 27.5,
-        peakSeasonTropicsTemp: 29.6
+        offSeasonTropicsTemp: 27,
+        peakSeasonTropicsTemp: 29.5
     }
 };
 ENV_DEFS[SIM_MODE_Australian].SST = {
@@ -1324,8 +1324,8 @@ ENV_DEFS[SIM_MODE_Australian].SST = {
     modifiers: {
         offSeasonPolarTemp: -7,
         peakSeasonPolarTemp: -2,
-        offSeasonTropicsTemp: 27.2,
-        peakSeasonTropicsTemp: 29.6
+        offSeasonTropicsTemp: 26.2,
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_WarmerEarth2C].SST = {
