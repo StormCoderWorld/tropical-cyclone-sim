@@ -99,7 +99,7 @@ SPAWN_RULES.defaults.archetypes = {
     'tw': {
         x: ()=>random(0,WIDTH-1),
         y: (b)=>b.hemY(random(HEIGHT*0.58,HEIGHT*0.92)), // this is the latitudes at which storms spawn, so for example the current latitude max is 70 so tropical waves currently form between 25 - 8 of the equator.
-        pressure: [1000,1005,1010],
+        pressure: [1005,1010,1015],
         windSpeed: [ 10, 20, 30],
         type: TROPWAVE,
         organization: [0.5,1.0,1.5,2.0,2.5],
@@ -1050,13 +1050,35 @@ ENV_DEFS.defaults.SSTAnomaly = {
     },
     hueMap: (v)=>{
         colorMode(HSB);
-        let cold = color(300,100,50);
-        let hot = color(0,100,50);
-        let cNeutral = color(200,100,100);
-        let hNeutral = color(65,100,100);
+        let coldwave = color(349, 100, 15);
+        let verycold = color(304, 88, 57);
+        let cold = color(248, 51, 77);
+        let chilly = color(230, 93, 84);
+        let cool = color(213, 92, 98);
+        let cNeutral = color(184, 100, 100);
+        let neutral = color(0, 0, 85);
+        let nearnormal = color(0, 0, 85);
+        let hNeutral = color(61, 100, 96);
+        let mild = color(46, 81, 95);
+        let warm = color(25, 85, 100);
+        let hot = color(7, 88, 100);
+        let stifling = color(9, 90, 65);
+        let heatwave = color(0, 100, 20);
         let c;
-        if(v<0) c = lerpColor(cold,cNeutral,map(v,-5,0,0,1));
-        else c = lerpColor(hNeutral,hot,map(v,0,5,0,1));
+        if (v >= -5 && v < -4) { c = lerpColor(coldwave,verycold,map(v,-5,-4,0,1));
+         }
+         else if (v >= -4 && v < -3) { c = lerpColor(verycold,cold,map(v,-4,-3,0,1));
+         }
+         else if (v >= -3. && v < -2) { c = lerpColor(cold,chilly,map(v,-3,-2,0,1));
+          } else if (v >= -2. && v < -1) { c = lerpColor(chilly,cool,map(v,-2,-1,0,1));
+          } else if (v >= -1 && v < -0.2) { c = lerpColor(cool,cNeutral,map(v,-1,-0.2,0,1));
+          } else if (v >= -0.2 && v < 0.2) { c = lerpColor(neutral,nearnormal,map(v,-0.2,0.2,0,1));
+          }  else if (v >= 0.2 && v < 1) { c = lerpColor(hNeutral,mild,map(v,-0.2,0.2,0,1));
+          }  else if (v >= 1 && v < 2) { c = lerpColor(mild,warm,map(v,1,2,0,1));
+          }   else if (v >= 2 && v < 3) { c = lerpColor(warm,hot,map(v,2,3,0,1));
+          }   else if (v >= 3 && v < 4) { c = lerpColor(hot,stifling,map(v,3,4,0,1));
+          }  
+          else  c = lerpColor(stifling,heatwave,map(v,4,5,0,1));
         colorMode(RGB);
         return c;
     },
@@ -1113,7 +1135,7 @@ ENV_DEFS.defaults.SST = {
         if(y<0) return 0;
         let anom = u.field('SSTAnomaly');
         let s = seasonalSine(z);
-        let w = map(cos(map(x,0,WIDTH, 3*-PI/4, 2*PI)),-1,1,0,1);
+        let w = map(cos(map(x,0,WIDTH, 3*-PI/4, 2*PI)),-1,1,0.2,0.9);
         let h0 = y/HEIGHT;
         let h1 = (sqrt(h0)+h0)/2;
         let h2 = sqrt(sqrt(h0));
@@ -1124,7 +1146,6 @@ ENV_DEFS.defaults.SST = {
         let pstt = u.modifiers.peakSeasonTropicsTemp;
         let t = lerp(map(s,-1,1,ospt,pspt), map(s,-1,1,ostt,pstt),h);
         return t+anom;
-
     }, 
 
     displayFormat: v=>{
@@ -1136,13 +1157,16 @@ ENV_DEFS.defaults.SST = {
     hueMap: (v)=>{
         colorMode(HSB);
         let c;
-        if(v<10) c = lerpColor(color(240,1,100),color(240,100,70),map(v,0,10,0,1));
-        else if(v<20) c = lerpColor(color(240,100,70),color(180,50,90),map(v,10,20,0,1));
-        else if(v<26) c = lerpColor(color(180,50,90),color(120,100,65),map(v,20,26,0,1));
-        else if(v<29) c = lerpColor(color(60,100,100),color(0,100,70),map(v,26,29,0,1));
-        else if(v<34) c = lerpColor(color(359,100,70),color(300,5,100),map(v,29,34,0,1));
-        else if(v<40) c = lerpColor(color(300,5,100),color(150,10,90),map(v,34,40,0,1));
-        else if(v<50) c = lerpColor(color(150,10,90),color(150,60,75),map(v,40,50,0,1));
+        if(v<0) c = lerpColor(color(336, 96, 19),color(350, 97, 51),map(v,-2,0,0,1));
+       else if(v<5) c = lerpColor(color(308, 93, 32),color(305, 88, 56),map(v,0,5,0,1));
+       else if(v<10) c = lerpColor(color(251, 88, 60),color(248, 50, 76),map(v,5,10,0,1));
+       else if(v<15) c = lerpColor(color(234, 97, 59),color(219, 93, 100),map(v,10,15,0,1));
+        else if(v<20) c = lerpColor(color(213, 92, 94),color(185, 84, 99),map(v,15,20,0,1));
+        else if(v<25) c = lerpColor(color(121, 84, 97),color(121, 86, 63),map(v,20,25,0,1));
+        else if(v<30) c = lerpColor(color(64, 79, 96),color(26, 86, 89),map(v,25,30,0,1));
+        else if(v<35) c = lerpColor(color(20, 88, 88),color(359, 83, 47),map(v,30,35,0,1));
+        else if(v<40) c = lerpColor(color(18, 72, 79),color(22, 72, 33),map(v,35,40,0,1));
+        else if(v<50) c = lerpColor(color(18, 72, 20),color(150,60,75),map(v,40,50,0,1));
         else if(v<75) c = lerpColor(color(30,90,90),color(30,30,90),map(v,50,75,0,1));
         else if(v<150) c = lerpColor(color(0,0,35),color(0,0,95),map(v,75,150,0,1));
         else c = lerpColor(color(0,0,25),color(0,0,95),map(v%150,0,150,0,1));
@@ -1223,7 +1247,7 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -7.5,
-        peakSeasonPolarTemp: 9,
+        peakSeasonPolarTemp: 5,
         offSeasonTropicsTemp: 27.7,
         peakSeasonTropicsTemp: 29.8
     }
@@ -1232,7 +1256,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -7,
-        peakSeasonPolarTemp: 5,
+        peakSeasonPolarTemp: 3,
         offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 30
 
@@ -1403,7 +1427,7 @@ ENV_DEFS.defaults.moisture = {
         let pm = u.modifiers.polarMoisture;
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
-        let m = map(l,0.6,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
+        let m = map(l,0.56,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
         m += map(s,-2.4,1,-0.08,0.08);
         m += map(v,0,1,-0.3,0.3);
         m = constrain(m,0,1);
@@ -1703,16 +1727,16 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
     sys.organization *= 100;
     if(!lnd && moisture >= 0.8) {
- sys.organization += sq(map(SST,20,29,31,0,0.75,1.2,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0.6,1.5,true))*3*tropicalness;
      }
  else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
- sys.organization += sq(map(SST,20,29,31,0,0.6,1,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0.45,1,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
- sys.organization += sq(map(SST,20,29,31,0,0.3,0.6,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0.3,0.6,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.5 && moisture < 0.6) {
- sys.organization += sq(map(SST,20,29,31,0,0.1,0.3,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0.15,0.3,true))*3*tropicalness;
  }
  else if (!lnd && moisture < 0.5) {
  sys.organization += sq(map(SST,20,28,30,0,0,0,true))*3*tropicalness;
@@ -1722,8 +1746,8 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
 
     if (moisture >= 0.5) {
-        if (!(sys.pressure < 1012)) {
-            sys.pressure = 1012; // Or any value below 1013 that you want to set it to
+        if (!(sys.pressure < 1015)) {
+            sys.pressure = 1015; // Or any value below 1013 that you want to set it to
         }
     }
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
@@ -1888,8 +1912,8 @@ sys.organization -= pow(1.3,24-SST)*tropicalness;
 sys.organization = constrain(sys.organization,0,100);
 sys.organization /= 100;
 
-    let targetPressure = 1010-25*log((lnd||SST<25)?1:map(SST,25,30,1,2,true))/log(1.17);
-    targetPressure = lerp(1010,targetPressure,pow(sys.organization,3));
+    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,2,true))/log(1.17);
+    targetPressure = lerp(1015,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
     if(sys.organization<2.51) sys.pressure += random(-2,2.5)*tropicalness;
@@ -1897,41 +1921,41 @@ sys.organization /= 100;
     sys.pressure += 0.5*sys.interaction.shear/(1+map(sys.lowerWarmCore,0,1,4,0,true));
     sys.pressure += map(jet,0,75,5*pow(1-sys.depth,4),0,true);
 
-    let targetWind = map(sys.pressure, 990, 900, 64, 180,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
+    let targetWind = map(sys.pressure, 1015, 900, 10, 175,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.05);
 if (moisture < 0.6) {
     if (!(sys.windSpeed < 40)) {
-        sys.windSpeed = 40; // Or any value below 1013 that you want to set it to
+        sys.windSpeed <= 40; // Or any value below 1013 that you want to set it to
     } else if  (moisture >= 0.6 && moisture < 0.625) {
         if (!(sys.windSpeed < 45)) {
-            sys.windSpeed = 45; // Or any value below 1013 that you want to set it to
+            sys.windSpeed <= 45; // Or any value below 1013 that you want to set it to
         } 
     } else if (moisture >= 0.625 && moisture < 0.65) {
         if (!(sys.windSpeed < 52)) {
-            sys.windSpeed = 55; // Or any value below 1013 that you want to set it to
+            sys.windSpeed <= 55; // Or any value below 1013 that you want to set it to
         } 
     } else if (moisture >= 0.65 && moisture < 0.675) {
         if (!(sys.windSpeed < 60)) {
-            sys.windSpeed = 64; // Or any value below 1013 that you want to set it to
+            sys.windSpeed <= 64; // Or any value below 1013 that you want to set it to
     } 
 } } else if  (moisture >= 0.675 && moisture < 0.7) {
     if (!(sys.windSpeed < 75)) {
-        sys.windSpeed = 74; // Or any value below 1013 that you want to set it to
+        sys.windSpeed <= 74; // Or any value below 1013 that you want to set it to
     } 
 } else if (moisture >= 0.7 && moisture < 0.725) {
     if (!(sys.windSpeed < 96)) {
-        sys.windSpeed = 96; // Or any value below 1013 that you want to set it to
+        sys.windSpeed <= 96; // Or any value below 1013 that you want to set it to
     } 
 } else if (moisture >= 0.725 && moisture < 0.75) {
     if (!(sys.windSpeed < 104)) {
-        sys.windSpeed = 105; // Or any value below 1013 that you want to set it to
+        sys.windSpeed <= 105; // Or any value below 1013 that you want to set it to
 } else if (moisture >= 0.75 && moisture < 0.775) {
     if (!(sys.windSpeed < 112)) {
-        sys.windSpeed = 112; // Or any value below 1013 that you want to set it to
+        sys.windSpeed <= 112; // Or any value below 1013 that you want to set it to
     } 
 } else if (moisture >= 0.775 && moisture < 0.8) {
-    if (!(sys.windSpeed < 140)) {
-        sys.windSpeed = 140; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 130)) {
+        sys.windSpeed <= 130; // Or any value below 1013 that you want to set it to
 } 
 }
 }
@@ -1946,7 +1970,7 @@ if (moisture < 0.6) {
     );
     sys.depth = lerp(sys.depth,targetDepth,0.05);
 
-    if(sys.pressure > 1025 || sys.interaction.kill > 0)
+    if(sys.pressure > 1020 || sys.interaction.kill > 0)
         sys.kill = true;
     console.log('Initial values:', {
         organization: sys.organization,
