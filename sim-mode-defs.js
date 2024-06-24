@@ -1135,7 +1135,7 @@ ENV_DEFS.defaults.SST = {
         if(y<0) return 0;
         let anom = u.field('SSTAnomaly');
         let s = seasonalSine(z);
-        let w = map(cos(map(x,0,WIDTH, 3*-PI/4, 2*PI)),-1,1,0.2,0.9);
+        let w = map(cos(map(x,0,WIDTH, 9*-PI/16, 2*PI)),-1,1,0.2,0.9);
         let h0 = y/HEIGHT;
         let h1 = (sqrt(h0)+h0)/2;
         let h2 = sqrt(sqrt(h0));
@@ -1176,7 +1176,7 @@ ENV_DEFS.defaults.SST = {
     oceanic: true,
     modifiers: {
         offSeasonPolarTemp: -6,
-        peakSeasonPolarTemp: 7,
+        peakSeasonPolarTemp: 4,
         offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 30
     }
@@ -1255,8 +1255,8 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].SST = {
 ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -7,
-        peakSeasonPolarTemp: 3,
+        offSeasonPolarTemp: -6,
+        peakSeasonPolarTemp: 2,
         offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 30
 
@@ -1310,10 +1310,10 @@ ENV_DEFS[SIM_MODE_WesternPacific].SST = {
 ENV_DEFS[SIM_MODE_NorthPacific].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -7.5,
-        peakSeasonPolarTemp: 8,
+        offSeasonPolarTemp: -9,
+        peakSeasonPolarTemp: -2,
         offSeasonTropicsTemp: 27.5,
-        peakSeasonTropicsTemp: 29.5
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_SouthPacific].SST = {
@@ -1322,7 +1322,7 @@ ENV_DEFS[SIM_MODE_SouthPacific].SST = {
         offSeasonPolarTemp: -8,
         peakSeasonPolarTemp: -2,
         offSeasonTropicsTemp: 27.5,
-        peakSeasonTropicsTemp: 29.3
+        peakSeasonTropicsTemp: 29.5
     }
 };
 ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
@@ -1330,8 +1330,8 @@ ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
     modifiers: {
         offSeasonPolarTemp: -5,
         peakSeasonPolarTemp: 7,
-        offSeasonTropicsTemp: 28,
-        peakSeasonTropicsTemp: 29.4
+        offSeasonTropicsTemp: 27.8,
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
@@ -1339,33 +1339,33 @@ ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
     modifiers: {
         offSeasonPolarTemp: -8,
         peakSeasonPolarTemp: -2.5,
-        offSeasonTropicsTemp: 27,
-        peakSeasonTropicsTemp: 29.5
+        offSeasonTropicsTemp: 27.8,
+        peakSeasonTropicsTemp: 29.8
     }
 };
 ENV_DEFS[SIM_MODE_Australian].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -7,
-        peakSeasonPolarTemp: -2,
-        offSeasonTropicsTemp: 26.2,
-        peakSeasonTropicsTemp: 30
+        offSeasonPolarTemp: -10,
+        peakSeasonPolarTemp: -4,
+        offSeasonTropicsTemp: 28,
+        peakSeasonTropicsTemp: 30.2
     }
 };
 ENV_DEFS[SIM_MODE_WarmerEarth2C].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -4.2,
-        peakSeasonPolarTemp: 11,
+        peakSeasonPolarTemp: 7,
         offSeasonTropicsTemp: 28.2,
-        peakSeasonTropicsTemp: 31
+        peakSeasonTropicsTemp: 30.5
     }
 };
 ENV_DEFS[SIM_MODE_PreIndustrial].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -7,
-        peakSeasonPolarTemp: 6,
+        offSeasonPolarTemp: -8,
+        peakSeasonPolarTemp: 0,
         offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 29.5
     }
@@ -1375,8 +1375,8 @@ ENV_DEFS[SIM_MODE_MiniIceAge].SST = {
     modifiers: {
         offSeasonPolarTemp: -13,
         peakSeasonPolarTemp: -7,
-        offSeasonTropicsTemp: 24,
-        peakSeasonTropicsTemp: 28.7
+        offSeasonTropicsTemp: 25,
+        peakSeasonTropicsTemp: 29
     }
 };
 ENV_DEFS[SIM_MODE_Earth4C].SST = {
@@ -1384,8 +1384,8 @@ ENV_DEFS[SIM_MODE_Earth4C].SST = {
     modifiers: {
         offSeasonPolarTemp: -2,
         peakSeasonPolarTemp: 13,
-        offSeasonTropicsTemp: 28.6,
-        peakSeasonTropicsTemp: 31.7
+        offSeasonTropicsTemp: 28.5,
+        peakSeasonTropicsTemp: 31
     }
 };
 ENV_DEFS[SIM_MODE_SnowballEarth].SST = {
@@ -1409,8 +1409,8 @@ ENV_DEFS[SIM_MODE_Drought].SST = {
 ENV_DEFS[SIM_MODE_Deluge].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -3,
-        peakSeasonPolarTemp: 13,
+        offSeasonPolarTemp: 0,
+        peakSeasonPolarTemp: 12,
         offSeasonTropicsTemp: 28,
         peakSeasonTropicsTemp: 30.5
     }
@@ -1428,7 +1428,7 @@ ENV_DEFS.defaults.moisture = {
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
         let m = map(l,0.56,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
-        m += map(s,-2.4,1,-0.08,0.08);
+        m += map(s,-1,1,-0.08,0.08);
         m += map(v,0,1,-0.3,0.3);
         m = constrain(m,0,1);
         return m;
@@ -1481,35 +1481,35 @@ ENV_DEFS[SIM_MODE_EXPERIMENTAL].moisture = {};
 ENV_DEFS[SIM_MODE_NorthernHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.72,
+        tropicalMoisture: 0.64,
         mountainMoisture: 0.10
     }
 };
 ENV_DEFS[SIM_MODE_SouthernHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.1,
-        tropicalMoisture: 0.72,
+        tropicalMoisture: 0.62,
         mountainMoisture: 0.11
     }
 };
 ENV_DEFS[SIM_MODE_WesternHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.72,
+        tropicalMoisture: 0.65,
         mountainMoisture: 0.12
     }
 };
 ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.72,
+        tropicalMoisture: 0.7,
         mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.72,
+        tropicalMoisture: 0.64,
         mountainMoisture: 0.06
     }
 };
@@ -1530,84 +1530,84 @@ ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
 ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.8,
+        tropicalMoisture: 0.65,
         mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
     modifiers: {
         polarMoisture: 0.30,
-        tropicalMoisture: 0.65,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.20
     }
 };
 ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.36,
-        tropicalMoisture: 0.8,
+        tropicalMoisture: 0.7,
         mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.75,
+        tropicalMoisture: 0.65,
         mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_SouthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.33,
-        tropicalMoisture: 0.74,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_NorthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.34,
-        tropicalMoisture: 0.76,
+        tropicalMoisture: 0.66,
         mountainMoisture: 0.07
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.33,
-        tropicalMoisture: 0.72,
+        tropicalMoisture: 0.62,
         mountainMoisture: 0.1
     }
 };
 ENV_DEFS[SIM_MODE_Australian].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.74,
+        tropicalMoisture: 0.64,
         mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_WarmerEarth2C].moisture = {
     modifiers: {
         polarMoisture: 0.37,
-        tropicalMoisture: 0.84,
+        tropicalMoisture: 0.74,
         mountainMoisture: 0.13
     }
 };
 ENV_DEFS[SIM_MODE_PreIndustrial].moisture = {
     modifiers: {
         polarMoisture: 0.3,
-        tropicalMoisture: 0.72,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.07
     }
 };
 ENV_DEFS[SIM_MODE_MiniIceAge].moisture = {
     modifiers: {
         polarMoisture: 0.17,
-        tropicalMoisture: 0.68,
+        tropicalMoisture: 0.55,
         mountainMoisture: 0.01
     }
 };
 ENV_DEFS[SIM_MODE_Earth4C].moisture = {
     modifiers: {
         polarMoisture: 0.4,
-        tropicalMoisture: 0.9,
+        tropicalMoisture: 0.8,
         mountainMoisture: 0.2
     }
 };
@@ -1621,14 +1621,14 @@ ENV_DEFS[SIM_MODE_SnowballEarth].moisture = {
 ENV_DEFS[SIM_MODE_Drought].moisture = {
     modifiers: {
         polarMoisture: 0.27,
-        tropicalMoisture: 0.65,
+        tropicalMoisture: 0.55,
         mountainMoisture: 0.02
     }
 };
 ENV_DEFS[SIM_MODE_Deluge].moisture = {
     modifiers: {
         polarMoisture: 0.45,
-        tropicalMoisture: 0.91,
+        tropicalMoisture: 0.9,
         mountainMoisture: 0.35
     }
 };
@@ -1936,27 +1936,43 @@ if (moisture < 0.6) {
         } 
     } else if (moisture >= 0.65 && moisture < 0.675) {
         if (!(sys.windSpeed < 60)) {
-            sys.windSpeed <= 64; // Or any value below 1013 that you want to set it to
+            sys.windSpeed <= 60; // Or any value below 1013 that you want to set it to
     } 
 } } else if  (moisture >= 0.675 && moisture < 0.7) {
-    if (!(sys.windSpeed < 75)) {
-        sys.windSpeed <= 74; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 65)) {
+        sys.windSpeed <= 65 && sys.pressure <= 988; // Or any value below 1013 that you want to set it to
     } 
 } else if (moisture >= 0.7 && moisture < 0.725) {
-    if (!(sys.windSpeed < 96)) {
-        sys.windSpeed <= 96; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 72)) {
+        sys.windSpeed <= 72 && sys.pressure <= 985; // Or any value below 1013 that you want to set it to
     } 
 } else if (moisture >= 0.725 && moisture < 0.75) {
-    if (!(sys.windSpeed < 104)) {
-        sys.windSpeed <= 105; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 78)) {
+        sys.windSpeed <= 78 && sys.pressure <= 982; // Or any value below 1013 that you want to set it to
 } else if (moisture >= 0.75 && moisture < 0.775) {
-    if (!(sys.windSpeed < 112)) {
-        sys.windSpeed <= 112; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 83)) {
+        sys.windSpeed <= 83 && sys.pressure <= 977; // Or any value below 1013 that you want to set it to
     } 
 } else if (moisture >= 0.775 && moisture < 0.8) {
-    if (!(sys.windSpeed < 130)) {
-        sys.windSpeed <= 130; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 89.5)) {
+        sys.windSpeed <= 89.5 && sys.pressure <= 970; // Or any value below 1013 that you want to set it to
+} else if (moisture >= 0.8 && moisture < 0.825) {
+    if (!(sys.windSpeed < 96)) {
+        sys.windSpeed <= 96 && sys.pressure <= 964; // Or any value below 1013 that you want to set it to
 } 
+} else if (moisture >= 0.825 && moisture < 0.85) {
+    if (!(sys.windSpeed < 104)) {
+        sys.windSpeed <= 104 && sys.pressure <= 955; // Or any value below 1013 that you want to set it to
+} 
+} else if (moisture >= 0.85 && moisture < 0.875) {
+    if (!(sys.windSpeed < 112)) {
+        sys.windSpeed <= 112 && sys.pressure <= 945; // Or any value below 1013 that you want to set it to
+} 
+} else if (moisture >= 0.875 && moisture < 0.9) {
+    if (!(sys.windSpeed < 130)) {
+        sys.windSpeed <= 130 && sys.pressure <= 925; // Or any value below 1013 that you want to set it to
+} 
+}
 }
 }
     let targetDepth = map(
