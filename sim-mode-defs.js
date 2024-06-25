@@ -319,7 +319,7 @@ SPAWN_RULES[SIM_MODE_EXPERIMENTAL].archetypes = {
 };
 SPAWN_RULES[SIM_MODE_NorthAtlantic].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0107*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.087*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.02-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -340,7 +340,7 @@ SPAWN_RULES[SIM_MODE_Mediterranean].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_EasternPacific].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0112*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.009*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.02-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -354,42 +354,42 @@ SPAWN_RULES[SIM_MODE_CentralPacific].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_WesternPacific].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0135*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0105*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.016-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 SPAWN_RULES[SIM_MODE_NorthPacific].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0195*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0175*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.026-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 SPAWN_RULES[SIM_MODE_SouthPacific].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0085*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0055*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.032-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 SPAWN_RULES[SIM_MODE_NorthIndianOcean].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0035*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0025*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 SPAWN_RULES[SIM_MODE_SouthIndianOcean].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0085*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0065*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.02-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 SPAWN_RULES[SIM_MODE_Australian].doSpawn = function(b){
     // tropical waves
-    if(random()<0.007*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.005*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.025-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -1256,7 +1256,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -6,
-        peakSeasonPolarTemp: 2,
+        peakSeasonPolarTemp: 0,
         offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 30
 
@@ -1284,7 +1284,7 @@ ENV_DEFS[SIM_MODE_EasternPacific].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -6,
-        peakSeasonPolarTemp: 10,
+        peakSeasonPolarTemp: -2,
         offSeasonTropicsTemp: 27.5,
         peakSeasonTropicsTemp: 29.7
     }
@@ -1302,7 +1302,7 @@ ENV_DEFS[SIM_MODE_WesternPacific].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -8,
-        peakSeasonPolarTemp: 8.5,
+        peakSeasonPolarTemp: -2,
         offSeasonTropicsTemp: 28.1,
         peakSeasonTropicsTemp: 30
     }
@@ -1329,7 +1329,7 @@ ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -5,
-        peakSeasonPolarTemp: 7,
+        peakSeasonPolarTemp: -1,
         offSeasonTropicsTemp: 27.8,
         peakSeasonTropicsTemp: 30
     }
@@ -1481,7 +1481,7 @@ ENV_DEFS[SIM_MODE_EXPERIMENTAL].moisture = {};
 ENV_DEFS[SIM_MODE_NorthernHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.64,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.10
     }
 };
@@ -1495,28 +1495,28 @@ ENV_DEFS[SIM_MODE_SouthernHemisphere].moisture = {
 ENV_DEFS[SIM_MODE_WesternHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.65,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.12
     }
 };
 ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.7,
+        tropicalMoisture: 0.64,
         mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
-        polarMoisture: 0.31,
-        tropicalMoisture: 0.64,
+        polarMoisture: 0.3,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.06
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.27,
-        tropicalMoisture: 0.6,
+        tropicalMoisture: 0.62,
         mountainMoisture: 0.1
     }
 };
@@ -1530,7 +1530,7 @@ ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
 ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.65,
+        tropicalMoisture: 0.62,
         mountainMoisture: 0.15
     }
 };
@@ -1543,50 +1543,50 @@ ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
 };
 ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
     modifiers: {
-        polarMoisture: 0.36,
-        tropicalMoisture: 0.7,
+        polarMoisture: 0.33,
+        tropicalMoisture: 0.63,
         mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.65,
+        tropicalMoisture: 0.61,
         mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_SouthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.33,
-        tropicalMoisture: 0.6,
+        tropicalMoisture: 0.58,
         mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_NorthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.34,
-        tropicalMoisture: 0.66,
+        tropicalMoisture: 0.58,
         mountainMoisture: 0.07
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.33,
-        tropicalMoisture: 0.62,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.1
     }
 };
 ENV_DEFS[SIM_MODE_Australian].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.64,
+        tropicalMoisture: 0.62,
         mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_WarmerEarth2C].moisture = {
     modifiers: {
         polarMoisture: 0.37,
-        tropicalMoisture: 0.74,
+        tropicalMoisture: 0.7,
         mountainMoisture: 0.13
     }
 };
