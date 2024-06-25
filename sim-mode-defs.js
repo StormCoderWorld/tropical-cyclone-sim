@@ -1446,7 +1446,7 @@ ENV_DEFS.defaults.moisture = {
     },
     modifiers: {
         polarMoisture: 0.30,
-        tropicalMoisture: 0.60,
+        tropicalMoisture: 0.55,
         mountainMoisture: 0.10
     },
     noiseChannels: [
@@ -1488,35 +1488,35 @@ ENV_DEFS[SIM_MODE_NorthernHemisphere].moisture = {
 ENV_DEFS[SIM_MODE_SouthernHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.1,
-        tropicalMoisture: 0.62,
+        tropicalMoisture: 0.58,
         mountainMoisture: 0.11
     }
 };
 ENV_DEFS[SIM_MODE_WesternHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.6,
+        tropicalMoisture: 0.55,
         mountainMoisture: 0.12
     }
 };
 ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
-        tropicalMoisture: 0.64,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.3,
-        tropicalMoisture: 0.6,
+        tropicalMoisture: 0.54,
         mountainMoisture: 0.06
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.27,
-        tropicalMoisture: 0.62,
+        tropicalMoisture: 0.52,
         mountainMoisture: 0.1
     }
 };
@@ -1530,42 +1530,42 @@ ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
 ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.62,
+        tropicalMoisture: 0.56,
         mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
     modifiers: {
         polarMoisture: 0.30,
-        tropicalMoisture: 0.6,
+        tropicalMoisture: 0.5,
         mountainMoisture: 0.20
     }
 };
 ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.33,
-        tropicalMoisture: 0.63,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.61,
+        tropicalMoisture: 0.58,
         mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_SouthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.33,
-        tropicalMoisture: 0.58,
+        tropicalMoisture: 0.56,
         mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_NorthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.34,
-        tropicalMoisture: 0.58,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.07
     }
 };
@@ -1579,21 +1579,21 @@ ENV_DEFS[SIM_MODE_SouthIndianOcean].moisture = {
 ENV_DEFS[SIM_MODE_Australian].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.62,
+        tropicalMoisture: 0.56,
         mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_WarmerEarth2C].moisture = {
     modifiers: {
         polarMoisture: 0.37,
-        tropicalMoisture: 0.7,
+        tropicalMoisture: 0.65,
         mountainMoisture: 0.13
     }
 };
 ENV_DEFS[SIM_MODE_PreIndustrial].moisture = {
     modifiers: {
         polarMoisture: 0.3,
-        tropicalMoisture: 0.6,
+        tropicalMoisture: 0.55,
         mountainMoisture: 0.07
     }
 };
@@ -1607,7 +1607,7 @@ ENV_DEFS[SIM_MODE_MiniIceAge].moisture = {
 ENV_DEFS[SIM_MODE_Earth4C].moisture = {
     modifiers: {
         polarMoisture: 0.4,
-        tropicalMoisture: 0.8,
+        tropicalMoisture: 0.72,
         mountainMoisture: 0.2
     }
 };
