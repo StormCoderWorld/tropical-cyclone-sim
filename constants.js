@@ -7,8 +7,8 @@ const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
 const EARLIEST_COMPATIBLE_FORMAT = 0;
 const ENVDATA_COMPATIBLE_FORMAT = 0;
 
-const WIDTH = 960; // 2:1 aspect ratio
-const HEIGHT = 480;
+const WIDTH = 1280; // 16:9 aspect ratio
+const HEIGHT = 720;
 const DIAMETER = 20;    // Storm icon diameter
 const PERLIN_ZOOM = 100;    // Resolution for perlin noise
 const TICK_DURATION = 3600000;  // How long in sim time does a tick last in milliseconds (1 hour)

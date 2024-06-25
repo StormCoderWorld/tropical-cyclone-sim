@@ -319,7 +319,7 @@ SPAWN_RULES[SIM_MODE_EXPERIMENTAL].archetypes = {
 };
 SPAWN_RULES[SIM_MODE_NorthAtlantic].doSpawn = function(b){
     // tropical waves
-    if(random()<0.087*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.008*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.02-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
