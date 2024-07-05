@@ -331,6 +331,20 @@ SPAWN_RULES[SIM_MODE_SouthernHemisphere].doSpawn = function(b){
     // extratropical cyclones
     if(random()<0.03-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
+SPAWN_RULES[SIM_MODE_WesternHemisphere].doSpawn = function(b){
+    // tropical waves
+    if(random()<0.0115*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+
+    // extratropical cyclones
+    if(random()<0.025-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+};
+SPAWN_RULES[SIM_MODE_EasternHemisphere].doSpawn = function(b){
+    // tropical waves
+    if(random()<0.013*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+
+    // extratropical cyclones
+    if(random()<0.035-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+};
 SPAWN_RULES[SIM_MODE_NorthAtlantic].doSpawn = function(b){
     // tropical waves
     if(random()<0.0085*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
@@ -1234,7 +1248,7 @@ ENV_DEFS[SIM_MODE_NorthernHemisphere].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -7,
-        peakSeasonPolarTemp: 3,
+        peakSeasonPolarTemp: 1,
         offSeasonTropicsTemp: 27.4,
         peakSeasonTropicsTemp: 30
     }
@@ -1243,7 +1257,7 @@ ENV_DEFS[SIM_MODE_SouthernHemisphere].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -8,
-        peakSeasonPolarTemp: -1,
+        peakSeasonPolarTemp: -2,
         offSeasonTropicsTemp: 26.8,
         peakSeasonTropicsTemp: 30
     }
@@ -1252,18 +1266,18 @@ ENV_DEFS[SIM_MODE_WesternHemisphere].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -8,
-        peakSeasonPolarTemp: 5,
+        peakSeasonPolarTemp: 1,
         offSeasonTropicsTemp: 26.6,
-        peakSeasonTropicsTemp: 29.6
+        peakSeasonTropicsTemp: 29.8
     }
 };
 ENV_DEFS[SIM_MODE_EasternHemisphere].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -7.5,
-        peakSeasonPolarTemp: 5,
-        offSeasonTropicsTemp: 27.7,
-        peakSeasonTropicsTemp: 29.8
+        peakSeasonPolarTemp: -1,
+        offSeasonTropicsTemp: 27.5,
+        peakSeasonTropicsTemp: 30.2
     }
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
