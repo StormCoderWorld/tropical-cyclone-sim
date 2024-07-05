@@ -333,17 +333,18 @@ SPAWN_RULES[SIM_MODE_SouthernHemisphere].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_WesternHemisphere].doSpawn = function(b){
     // tropical waves
-    if(random()<0.01*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.012*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+
 
     // extratropical cyclones
-    if(random()<0.025-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+    if(random()<0.016-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 SPAWN_RULES[SIM_MODE_EasternHemisphere].doSpawn = function(b){
     // tropical waves
-    if(random()<0.013*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.014*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
-    if(random()<0.035-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+    if(random()<0.032-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 SPAWN_RULES[SIM_MODE_NorthAtlantic].doSpawn = function(b){
     // tropical waves
@@ -572,8 +573,8 @@ modifiers: {
 
 ENV_DEFS[SIM_MODE_WesternHemisphere].jetstream = {
 modifiers: {
-        peakLat: 0.31,
-        antiPeakLat: 0.52,
+        peakLat: 0.275,
+        antiPeakLat: 0.5,
         peakRange: 0.4,
         antiPeakRange: 0.55
     }
@@ -615,7 +616,7 @@ ENV_DEFS[SIM_MODE_EasternPacific].jetstream = {
 modifiers: {
         peakLat: 0.20,
         antiPeakLat: 0.55,
-        peakRange: 0.15,
+        peakRange: 0.35,
         antiPeakRange: 0.65
     }
 };
@@ -1265,9 +1266,9 @@ ENV_DEFS[SIM_MODE_SouthernHemisphere].SST = {
 ENV_DEFS[SIM_MODE_WesternHemisphere].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -8,
-        peakSeasonPolarTemp: 1,
-        offSeasonTropicsTemp: 26.6,
+        offSeasonPolarTemp: -9,
+        peakSeasonPolarTemp: 3,
+        offSeasonTropicsTemp: 26.5,
         peakSeasonTropicsTemp: 30
     }
 };
@@ -1311,10 +1312,10 @@ ENV_DEFS[SIM_MODE_Mediterranean].SST = {
 ENV_DEFS[SIM_MODE_EasternPacific].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -6,
+        offSeasonPolarTemp: -8,
         peakSeasonPolarTemp: -2,
         offSeasonTropicsTemp: 27.1,
-        peakSeasonTropicsTemp: 29.7
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_CentralPacific].SST = {
