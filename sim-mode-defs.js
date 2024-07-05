@@ -1356,10 +1356,10 @@ ENV_DEFS[SIM_MODE_SouthPacific].SST = {
 ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -5,
-        peakSeasonPolarTemp: -1,
-        offSeasonTropicsTemp: 27.8,
-        peakSeasonTropicsTemp: 30
+        offSeasonPolarTemp: -12,
+        peakSeasonPolarTemp: -2,
+        offSeasonTropicsTemp: 28,
+        peakSeasonTropicsTemp: 31
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
