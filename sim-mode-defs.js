@@ -333,7 +333,7 @@ SPAWN_RULES[SIM_MODE_SouthernHemisphere].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_WesternHemisphere].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0115*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.01*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.025-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -1268,16 +1268,16 @@ ENV_DEFS[SIM_MODE_WesternHemisphere].SST = {
         offSeasonPolarTemp: -8,
         peakSeasonPolarTemp: 1,
         offSeasonTropicsTemp: 26.6,
-        peakSeasonTropicsTemp: 29.8
+        peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_EasternHemisphere].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -7.5,
-        peakSeasonPolarTemp: -1,
+        offSeasonPolarTemp: -12,
+        peakSeasonPolarTemp: 0,
         offSeasonTropicsTemp: 27.5,
-        peakSeasonTropicsTemp: 30.2
+        peakSeasonTropicsTemp: 31
     }
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
@@ -1356,10 +1356,10 @@ ENV_DEFS[SIM_MODE_SouthPacific].SST = {
 ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -12,
-        peakSeasonPolarTemp: -2,
+        offSeasonPolarTemp: -14,
+        peakSeasonPolarTemp: 0,
         offSeasonTropicsTemp: 28,
-        peakSeasonTropicsTemp: 31
+        peakSeasonTropicsTemp: 31.2
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
