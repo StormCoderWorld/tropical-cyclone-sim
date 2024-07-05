@@ -317,6 +317,20 @@ SPAWN_RULES[SIM_MODE_EXPERIMENTAL].archetypes = {
         kaboom: 0.2
     }
 };
+SPAWN_RULES[SIM_MODE_NorthernHemisphere].doSpawn = function(b){
+    // tropical waves
+    if(random()<0.02*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+
+    // extratropical cyclones
+    if(random()<0.02-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+};
+SPAWN_RULES[SIM_MODE_SouthernHemisphere].doSpawn = function(b){
+    // tropical waves
+    if(random()<0.012*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+
+    // extratropical cyclones
+    if(random()<0.03-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+};
 SPAWN_RULES[SIM_MODE_NorthAtlantic].doSpawn = function(b){
     // tropical waves
     if(random()<0.0085*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
