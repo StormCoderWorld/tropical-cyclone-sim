@@ -573,8 +573,8 @@ modifiers: {
 
 ENV_DEFS[SIM_MODE_WesternHemisphere].jetstream = {
 modifiers: {
-        peakLat: 0.275,
-        antiPeakLat: 0.5,
+        peakLat: 0.27,
+        antiPeakLat: 0.53,
         peakRange: 0.4,
         antiPeakRange: 0.55
     }
@@ -1213,9 +1213,9 @@ ENV_DEFS.defaults.SST = {
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
 ENV_DEFS[SIM_MODE_HYPER].SST = {
     modifiers: {
-        offSeasonPolarTemp: -5,
-        peakSeasonPolarTemp: 20,
-        offSeasonTropicsTemp: 28,
+        offSeasonPolarTemp: -20,
+        peakSeasonPolarTemp: 5,
+        offSeasonTropicsTemp: 25,
         peakSeasonTropicsTemp: 35
     }
 };
@@ -1266,18 +1266,18 @@ ENV_DEFS[SIM_MODE_SouthernHemisphere].SST = {
 ENV_DEFS[SIM_MODE_WesternHemisphere].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -9,
+        offSeasonPolarTemp: -12,
         peakSeasonPolarTemp: 3,
-        offSeasonTropicsTemp: 26.5,
+        offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 30
     }
 };
 ENV_DEFS[SIM_MODE_EasternHemisphere].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -12,
-        peakSeasonPolarTemp: 0,
-        offSeasonTropicsTemp: 27.5,
+        offSeasonPolarTemp: -16,
+        peakSeasonPolarTemp: -2,
+        offSeasonTropicsTemp: 28,
         peakSeasonTropicsTemp: 31
     }
 };
@@ -1393,9 +1393,9 @@ ENV_DEFS[SIM_MODE_WarmerEarth2C].SST = {
 ENV_DEFS[SIM_MODE_PreIndustrial].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -8,
+        offSeasonPolarTemp: -12,
         peakSeasonPolarTemp: 0,
-        offSeasonTropicsTemp: 26,
+        offSeasonTropicsTemp: 26.5,
         peakSeasonTropicsTemp: 29.5
     }
 };

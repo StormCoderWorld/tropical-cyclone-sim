@@ -1,6 +1,6 @@
 
 const TITLE = "Tropical Cyclone Simulator";
-const VERSION_NUMBER = "0.6.43.2";
+const VERSION_NUMBER = "0.6.43.3";
 
 
 const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
@@ -469,7 +469,7 @@ const KEY_REPEAT_COOLDOWN = 15;
 const KEY_REPEATER = 5;
 const MAX_SNOW_LAYERS = 100;
 const SNOW_SEASON_OFFSET = 5/6;
-const ENV_LAYER_TILE_SIZE = 40;
+const ENV_LAYER_TILE_SIZE = 30;
 const NC_OFFSET_RANDOM_FACTOR = 4096;
 const ACE_WIND_THRESHOLD = 34;
 const ACE_DIVISOR = 10000;
