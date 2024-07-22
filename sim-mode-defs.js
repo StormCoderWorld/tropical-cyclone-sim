@@ -780,7 +780,7 @@ ENV_DEFS.defaults.LLSteering = {
         westerlyNoiseRange: 0.35,
         westerlyJetstreamEffectRange: 0.6,
         westerlyMax: 20,
-        ridgingJetstreamEffectRange: 0.4,
+        ridgingJetstreamEffectRange: 0.8,
         tradesRidgingEffectRange: 0.4,
         tradesMax: 3,
         tradesAngleEquator: 17*Math.PI/16,
@@ -897,16 +897,16 @@ ENV_DEFS.defaults.ULSteering = {
         jetstreamOverpowerBase: 0.7,
         jetstreamInwardAngle: Math.PI/4,
         troughBase: 1.5,
-        troughExponentMin: -5,
-        troughExponentMax: 5,
+        troughExponentMin: -10,
+        troughExponentMax: 7,
         troughAngle: -Math.PI/16,
-        hadleyUpperBound: 5,
-        hadleyLowerBound: 2,
+        hadleyUpperBound: 6,
+        hadleyLowerBound: 1,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
-        noiseExponentMin: -8,
-        noiseExponentMax: 5
+        noiseExponentMin: -10,
+        noiseExponentMax: 10
     },
     noiseChannels: [
         [4,0.5,180,300,1,2],
@@ -1012,12 +1012,12 @@ let extreme = color(0,100,100)
         let moderate = color(180,100,100);
         let weak = color(270,100,100);
         let c;
-        if(v < 2)
-            c = lerpColor(weak, moderate, map(v,0,2,0,1));
-        else if(v < 4)
-            c = lerpColor(moderate, strong, map(v,2,4,0,1));
+        if(v < 1)
+            c = lerpColor(weak, moderate, map(v,0,1,0,1));
+        else if(v < 3)
+            c = lerpColor(moderate, strong, map(v,1,3,0,1));
 else 
-c = lerpColor(strong, extreme, map(v,4,6,0,1));
+c = lerpColor(strong, extreme, map(v,3,5,0,1));
         colorMode(RGB);
         return c;
     }
@@ -1186,7 +1186,8 @@ ENV_DEFS.defaults.SST = {
     hueMap: (v)=>{
         colorMode(HSB);
         let c;
-        if(v<0) c = lerpColor(color(336, 96, 19),color(350, 97, 51),map(v,-2,0,0,1));
+        if(v<-2) c = lerpColor(color(0, 0, 98),color(0, 0, 94),map(v,-100,-2,0,1));
+       else if(v<0) c = lerpColor(color(336, 96, 19),color(350, 97, 51),map(v,-2,0,0,1));
        else if(v<5) c = lerpColor(color(308, 93, 32),color(305, 88, 56),map(v,0,5,0,1));
        else if(v<10) c = lerpColor(color(251, 88, 60),color(248, 50, 76),map(v,5,10,0,1));
        else if(v<15) c = lerpColor(color(234, 97, 59),color(219, 93, 100),map(v,10,15,0,1));
@@ -1204,9 +1205,9 @@ ENV_DEFS.defaults.SST = {
     },
     oceanic: true,
     modifiers: {
-        offSeasonPolarTemp: -6,
-        peakSeasonPolarTemp: 4,
-        offSeasonTropicsTemp: 26,
+        offSeasonPolarTemp: -8,
+        peakSeasonPolarTemp: 2,
+        offSeasonTropicsTemp: 26.5,
         peakSeasonTropicsTemp: 30
     }
 };
@@ -1286,7 +1287,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     modifiers: {
         offSeasonPolarTemp: -6,
         peakSeasonPolarTemp: 2,
-        offSeasonTropicsTemp: 26,
+        offSeasonTropicsTemp: 26.8,
         peakSeasonTropicsTemp: 30
 
     }
@@ -1314,7 +1315,7 @@ ENV_DEFS[SIM_MODE_EasternPacific].SST = {
     modifiers: {
         offSeasonPolarTemp: -8,
         peakSeasonPolarTemp: -2,
-        offSeasonTropicsTemp: 27.1,
+        offSeasonTropicsTemp: 27.2,
         peakSeasonTropicsTemp: 30
     }
 };
@@ -1457,8 +1458,8 @@ ENV_DEFS.defaults.moisture = {
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
         let m = map(l,0.56,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
-        m += map(s,-1,1,-0.08,0.08);
-        m += map(v,0,1,-0.3,0.3);
+        m += map(s,-1,1,-0.15,0.15);
+        m += map(v,0,1,-0.45,0.45);
         m = constrain(m,0,1);
         return m;
     },

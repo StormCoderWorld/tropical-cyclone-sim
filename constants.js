@@ -1,6 +1,6 @@
 
 const TITLE = "Tropical Cyclone Simulator";
-const VERSION_NUMBER = "0.6.43.3";
+const VERSION_NUMBER = "0.6.43.4";
 
 
 const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
