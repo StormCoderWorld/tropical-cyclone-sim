@@ -777,11 +777,11 @@ ENV_DEFS.defaults.LLSteering = {
         [4,0.5,170,300,1,3]
     ],
     modifiers: {
-        westerlyNoiseRange: 0.35,
-        westerlyJetstreamEffectRange: 0.6,
+        westerlyNoiseRange: 0.5,
+        westerlyJetstreamEffectRange: 0.9,
         westerlyMax: 20,
-        ridgingJetstreamEffectRange: 0.8,
-        tradesRidgingEffectRange: 0.4,
+        ridgingJetstreamEffectRange: 0.6,
+        tradesRidgingEffectRange: 0.3,
         tradesMax: 3,
         tradesAngleEquator: 17*Math.PI/16,
         tradesAngle: 511*Math.PI/512,
@@ -897,16 +897,16 @@ ENV_DEFS.defaults.ULSteering = {
         jetstreamOverpowerBase: 0.7,
         jetstreamInwardAngle: Math.PI/4,
         troughBase: 1.5,
-        troughExponentMin: -6,
+        troughExponentMin: -10,
         troughExponentMax: 6,
         troughAngle: -Math.PI/16,
         hadleyUpperBound: 6,
-        hadleyLowerBound: 1,
+        hadleyLowerBound: 1.3,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
-        noiseExponentMin: -6,
-        noiseExponentMax: 6
+        noiseExponentMin: -10,
+        noiseExponentMax: 5
     },
     noiseChannels: [
         [4,0.5,180,300,1,2],
@@ -1457,9 +1457,9 @@ ENV_DEFS.defaults.moisture = {
         let pm = u.modifiers.polarMoisture;
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
-        let m = map(l,0.56,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
-        m += map(s,-1,1,-0.15,0.15);
-        m += map(v,0,1,-0.45,0.45);
+        let m = map(l,0.56,0.7,map(y,0,HEIGHT,pm,tm),mm,true);
+        m += map(s,-1,1,-0.24,0.12);
+        m += map(v,0,1,-0.4,0.4);
         m = constrain(m,0,1);
         return m;
     },
@@ -1469,7 +1469,7 @@ ENV_DEFS.defaults.moisture = {
     hueMap: v=>{
         colorMode(HSB);
         let c;
-        if(v<0.5) c = lerpColor(color(45,100,30),color(45,1,90),map(v,0,0.5,0,1));
+        if(v<0.5) c = lerpColor(color(10,100,30),color(45,1,90),map(v,0,0.5,0,1));
         else c = lerpColor(color(120,1,90),color(240,100,30),map(v,0.5,1,0,1));
         colorMode(RGB);
         return c;
