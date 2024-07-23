@@ -897,16 +897,16 @@ ENV_DEFS.defaults.ULSteering = {
         jetstreamOverpowerBase: 0.7,
         jetstreamInwardAngle: Math.PI/4,
         troughBase: 1.5,
-        troughExponentMin: -10,
-        troughExponentMax: 7,
+        troughExponentMin: -6,
+        troughExponentMax: 6,
         troughAngle: -Math.PI/16,
         hadleyUpperBound: 6,
         hadleyLowerBound: 1,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
-        noiseExponentMin: -10,
-        noiseExponentMax: 10
+        noiseExponentMin: -6,
+        noiseExponentMax: 6
     },
     noiseChannels: [
         [4,0.5,180,300,1,2],
