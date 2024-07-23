@@ -906,7 +906,7 @@ ENV_DEFS.defaults.ULSteering = {
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
         noiseExponentMin: -10,
-        noiseExponentMax: 10
+        noiseExponentMax: 6
     },
     noiseChannels: [
         [4,0.5,180,300,1,2],
