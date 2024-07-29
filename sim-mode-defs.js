@@ -508,7 +508,7 @@ ENV_DEFS.defaults.jetstream = {
         let antiPeakLat = u.modifiers.antiPeakLat;
         let peakRange = u.modifiers.peakRange;
         let antiPeakRange = u.modifiers.antiPeakRange;
-        let s = seasonalSine(z);
+        let s = seasonalSine(z+(1/12));
         let l = map(sqrt(map(s,-1,1,0,1)),0,1,antiPeakLat,peakLat);
         let r = map(s,-1,1,antiPeakRange,peakRange);
         v = map(v,0,1,-r,r);
@@ -1789,154 +1789,154 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
 
  if (moisture >= 0 && moisture < 0.02) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 8.5;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 8.5;
 }
 else if (moisture >= 0.02 && moisture < 0.04) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 6.25;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 6.25;
 }
 else if (moisture >= 0.04 && moisture < 0.06) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 5.5;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 5.5;
 }
 else if (moisture >= 0.06 && moisture < 0.08) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 4;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4;
 }
 else if (moisture >= 0.08 && moisture < 0.09) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 3.6;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.6;
 }
 else if (moisture >= 0.09 && moisture < 0.1) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 3.35;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.35;
 }
 else if (moisture >= 0.1 && moisture < 0.115) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 3.15;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.15;
 }
 else if (moisture >= 0.115 && moisture < 0.12) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.98;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.98;
 }
 else if (moisture >= 0.12 && moisture < 0.15) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.93;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.93;
 }
 else if (moisture >= 0.15 && moisture < 0.18) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.8;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.8;
 }
 else if (moisture >= 0.18 && moisture < 0.2) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.74;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.74;
 }
 else if (moisture >= 0.2 && moisture < 0.22) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.6;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.6;
 }
 else if (moisture >= 0.22 && moisture < 0.23) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.3;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.3;
 }
 else if (moisture >= 0.23 && moisture < 0.26) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.25;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.25;
 }
 else if (moisture >= 0.26 && moisture < 0.29) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.16;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.16;
 }
 else if (moisture >= 0.29 && moisture < 0.3) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 2.05;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.05;
 }
 else if (moisture >= 0.3 && moisture < 0.31) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.8;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.8;
 }
 else if (moisture >= 0.31 && moisture < 0.325) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.64;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.64;
 }
 else if (moisture >= 0.325 && moisture < 0.342) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.55;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.55;
 }
 else if (moisture >= 0.342 && moisture < 0.358) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.32;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.32;
 }
 else if (moisture >= 0.358 && moisture < 0.37) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.3;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.3;
 }
 else if (moisture >= 0.37 && moisture < 0.4) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.19;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.19;
 }
 else if (moisture >= 0.4 && moisture < 0.415) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.08;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.08;
 }
  else if (moisture >= 0.415 && moisture < 0.43) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 1.02;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.02;
 }
 else if (moisture >= 0.43 && moisture < 0.45) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.96;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 0.96;
 }
 else if (moisture >= 0.45 && moisture < 0.465) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.82;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 0.82;
 }
 else if (moisture >= 0.465 && moisture < 0.48) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.78;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 0.78;
 }
 else if (moisture >= 0.48 && moisture < 0.5) {
-    sys.organization -= sq(map(moisture, 0, 1, 0, 6, true)) * 0.6;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 0.6;
 }
 else if (moisture >= 0.5 && moisture < 0.53) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.4;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 0.4;
 }
 else if (moisture >= 0.53 && moisture < 0.56) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.45;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 0.45;
 }
 else if (moisture >= 0.56 && moisture < 0.58) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.5;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 0.5;
 }
 else if (moisture >= 0.58 && moisture < 0.6) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.64;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 0.64;
 }
 else if (moisture >= 0.6 && moisture <0.62) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.7;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 0.7;
 }
 else if (moisture >= 0.62 && moisture <0.65) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.77;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 0.77;
 }
 else if (moisture >= 0.65 && moisture <0.68) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.83;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 0.83;
 }
 else if (moisture >= 0.68 && moisture <0.7) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 0.91;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 0.91;
 }
 else if (moisture >= 0.7 && moisture <0.72) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 1;
 }
 else if (moisture >= 0.72 && moisture <0.74) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.25;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 1.25;
 }
 else if (moisture >= 0.74 && moisture <0.75) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.4;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 1.4;
 }
 else if (moisture >= 0.75 && moisture <0.77) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.6;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 1.6;
 }
 else if (moisture >= 0.77 && moisture <0.8) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.75;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 1.75;
 }
 else if (moisture >= 0.8 && moisture <0.82) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.82;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 1.82;
 }
 else if (moisture >= 0.82 && moisture <0.84) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 1.96;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 1.96;
 }
 else if (moisture >= 0.84 && moisture <0.86) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.03;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 2.03;
 }
 else if (moisture >= 0.86 && moisture <0.88) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.12;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 2.12;
 }
 else if (moisture >= 0.88 && moisture <0.9) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.18;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 2.18;
 }
 else if (moisture >= 0.9 && moisture <0.93) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.24;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 2.24;
 }
 else if (moisture >= 0.93 && moisture <0.95) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.33;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 2.33;
 }
 else if (moisture >= 0.95 && moisture <0.98) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.442;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 2.442;
 }
 else if (moisture >= 0.98 && moisture <= 1) {
-    sys.organization += sq(map(moisture, 0, 1, 0, 6, true)) * 2.5;
+    sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 2.5;
 }
 sys.organization -= pow(1.3,24-SST)*tropicalness;
 sys.organization = constrain(sys.organization,0,100);
