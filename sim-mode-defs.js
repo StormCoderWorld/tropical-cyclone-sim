@@ -333,7 +333,7 @@ SPAWN_RULES[SIM_MODE_SouthernHemisphere].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_WesternHemisphere].doSpawn = function(b){
     // tropical waves
-    if(random()<0.012*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.015*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
 
     // extratropical cyclones
@@ -341,21 +341,21 @@ SPAWN_RULES[SIM_MODE_WesternHemisphere].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_EasternHemisphere].doSpawn = function(b){
     // tropical waves
-    if(random()<0.014*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.013*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.032-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 SPAWN_RULES[SIM_MODE_NorthAtlantic].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0085*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0108*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.02-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 SPAWN_RULES[SIM_MODE_SouthAtlantic].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0015*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0002*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.035-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -369,7 +369,7 @@ SPAWN_RULES[SIM_MODE_Mediterranean].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_EasternPacific].doSpawn = function(b){
     // tropical waves
-    if(random()<0.009*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.011*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.02-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -383,7 +383,7 @@ SPAWN_RULES[SIM_MODE_CentralPacific].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_WesternPacific].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0105*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.014*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.016-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -404,21 +404,21 @@ SPAWN_RULES[SIM_MODE_SouthPacific].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_NorthIndianOcean].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0025*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0015*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 SPAWN_RULES[SIM_MODE_SouthIndianOcean].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0065*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.006*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.02-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
 SPAWN_RULES[SIM_MODE_Australian].doSpawn = function(b){
     // tropical waves
-    if(random()<0.005*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0055*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.025-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -590,7 +590,7 @@ modifiers: {
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].jetstream = {
 modifiers: {
-        peakLat: 0.30,
+        peakLat: 0.3,
         antiPeakLat: 0.5,
         peakRange: 0.4,
         antiPeakRange: 0.60
@@ -1249,17 +1249,17 @@ ENV_DEFS[SIM_MODE_EXPERIMENTAL].SST = {
 ENV_DEFS[SIM_MODE_NorthernHemisphere].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -7,
-        peakSeasonPolarTemp: 1,
+        offSeasonPolarTemp: -14,
+        peakSeasonPolarTemp: 0,
         offSeasonTropicsTemp: 27.4,
-        peakSeasonTropicsTemp: 30
+        peakSeasonTropicsTemp: 30.5
     }
 };
 ENV_DEFS[SIM_MODE_SouthernHemisphere].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -8,
-        peakSeasonPolarTemp: -2,
+        offSeasonPolarTemp: -20,
+        peakSeasonPolarTemp: -8,
         offSeasonTropicsTemp: 26.8,
         peakSeasonTropicsTemp: 30
     }
@@ -1287,16 +1287,16 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     modifiers: {
         offSeasonPolarTemp: -14,
         peakSeasonPolarTemp: 4,
-        offSeasonTropicsTemp: 27,
-        peakSeasonTropicsTemp: 30
+        offSeasonTropicsTemp: 26.5,
+        peakSeasonTropicsTemp: 30.5
 
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -9,
-        peakSeasonPolarTemp: -2,
+        offSeasonPolarTemp: -18,
+        peakSeasonPolarTemp: -6,
         offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 29.2
     }
@@ -1526,21 +1526,21 @@ ENV_DEFS[SIM_MODE_WesternHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.41,
         tropicalMoisture: 0.49,
-        mountainMoisture: 0.12
+        mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
     modifiers: {
         polarMoisture: 0.31,
         tropicalMoisture: 0.54,
-        mountainMoisture: 0.08
+        mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.4,
-        tropicalMoisture: 0.48,
-        mountainMoisture: 0.06
+        tropicalMoisture: 0.5,
+        mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].moisture = {
@@ -1560,7 +1560,7 @@ ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
 ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.5,
+        tropicalMoisture: 0.54,
         mountainMoisture: 0.15
     }
 };
@@ -1574,14 +1574,14 @@ ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
 ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.43,
-        tropicalMoisture: 0.55,
+        tropicalMoisture: 0.6,
         mountainMoisture: 0.08
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
     modifiers: {
         polarMoisture: 0.4,
-        tropicalMoisture: 0.52,
+        tropicalMoisture: 0.55,
         mountainMoisture: 0.05
     }
 };
@@ -1746,7 +1746,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     
     let targetWarmCore = (lnd ?
         sys.lowerWarmCore :
-        max(pow(map(SST,24,28,0,1,true),3),sys.lowerWarmCore)
+        max(pow(map(SST,20,28,0,1,true),3),sys.lowerWarmCore)
     )*map(jet,0,75,sq(1-sys.depth),1,true);
     sys.lowerWarmCore = lerp(sys.lowerWarmCore,targetWarmCore,sys.lowerWarmCore>targetWarmCore ? map(jet,0,75,0.4,0.06,true) : 0.04);
     sys.upperWarmCore = lerp(sys.upperWarmCore,sys.lowerWarmCore,sys.lowerWarmCore>sys.upperWarmCore ? 0.05 : 0.4);
@@ -1757,10 +1757,10 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
     sys.organization *= 100;
     if(!lnd && moisture >= 0.8) {
- sys.organization += sq(map(SST,20,28,30,0,0.6,1.5,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0.75,1.5,true))*3*tropicalness;
      }
  else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
- sys.organization += sq(map(SST,20,28,30,0,0.45,1,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0.5,1,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
  sys.organization += sq(map(SST,20,28,30,0,0.3,0.6,true))*3*tropicalness;
@@ -1777,7 +1777,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
     if (moisture >= 0.5) {
         if (!(sys.pressure < 1015)) {
-            sys.pressure = 1015; // Or any value below 1013 that you want to set it to
+            sys.pressure = 1015; // Or any value that you want to set it to
         }
     }
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
@@ -1798,49 +1798,49 @@ else if (moisture >= 0.04 && moisture < 0.06) {
     sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 5.5;
 }
 else if (moisture >= 0.06 && moisture < 0.08) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 5;
 }
 else if (moisture >= 0.08 && moisture < 0.09) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.6;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4.9;
 }
 else if (moisture >= 0.09 && moisture < 0.1) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.35;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4.75;
 }
 else if (moisture >= 0.1 && moisture < 0.115) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.15;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4.55;
 }
 else if (moisture >= 0.115 && moisture < 0.12) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.98;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4.38;
 }
 else if (moisture >= 0.12 && moisture < 0.15) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.93;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4.23;
 }
 else if (moisture >= 0.15 && moisture < 0.18) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.8;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4;
 }
 else if (moisture >= 0.18 && moisture < 0.2) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.74;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.94;
 }
 else if (moisture >= 0.2 && moisture < 0.22) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.6;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.6;
 }
 else if (moisture >= 0.22 && moisture < 0.23) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.3;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.5;
 }
 else if (moisture >= 0.23 && moisture < 0.26) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.25;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.25;
 }
 else if (moisture >= 0.26 && moisture < 0.29) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.16;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.56;
 }
 else if (moisture >= 0.29 && moisture < 0.3) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.05;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.25;
 }
 else if (moisture >= 0.3 && moisture < 0.31) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.8;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2;
 }
 else if (moisture >= 0.31 && moisture < 0.325) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.64;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.74;
 }
 else if (moisture >= 0.325 && moisture < 0.342) {
     sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.55;
@@ -1942,8 +1942,8 @@ sys.organization -= pow(1.3,24-SST)*tropicalness;
 sys.organization = constrain(sys.organization,0,100);
 sys.organization /= 100;
 
-    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,2,true))/log(1.17);
-    targetPressure = lerp(1015,targetPressure,pow(sys.organization,3));
+    let targetPressure = 1012-25*log((lnd||SST<25)?1:map(SST,25,30,1,2,true))/log(1.17);
+    targetPressure = lerp(1012,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
     if(sys.organization<2.51) sys.pressure += random(-2,2.5)*tropicalness;
@@ -1951,7 +1951,7 @@ sys.organization /= 100;
     sys.pressure += 0.5*sys.interaction.shear/(1+map(sys.lowerWarmCore,0,1,4,0,true));
     sys.pressure += map(jet,0,75,5*pow(1-sys.depth,4),0,true);
 
-    let targetWind = map(sys.pressure, 1015, 900, 10, 175,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
+    let targetWind = map(sys.pressure, 1012, 900, 10, 175,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
     sys.windSpeed = lerp(sys.windSpeed,targetWind,0.05);
 if (moisture < 0.6) {
     if (!(sys.windSpeed < 40)) {
@@ -2133,16 +2133,16 @@ if(lnd>=0.75)
 STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
     switch(sys.type){
         case TROP:
-            sys.type = sys.lowerWarmCore<0.9 ? EXTROP : ((sys.organization<0.35 && sys.windSpeed<25) || sys.windSpeed<29) ? sys.upperWarmCore<0.35 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.65 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.75 ? EXTROP : ((sys.organization < 10 && sys.windSpeed < 34) || sys.windSpeed<29) ? sys.upperWarmCore <0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
             break;
         case SUBTROP:
-            sys.type = sys.lowerWarmCore<0.25 ? EXTROP : ((sys.organization<0.20 && sys.windSpeed<25) || sys.windSpeed<29) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.50 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.25 ? EXTROP : ((sys.organization < 0.3 && sys.windSpeed < 25) || sys.windSpeed< 15) ? sys.upperWarmCore<0.15 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.7 ? SUBTROP : TROP;
             break;
         case TROPWAVE:
-            sys.type = sys.lowerWarmCore<0.9 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.7 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.75 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.75 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
             break;
         default:
-            sys.type = sys.lowerWarmCore<0.35 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.75 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.35 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.7 ? SUBTROP : TROP;
     }
 };
 

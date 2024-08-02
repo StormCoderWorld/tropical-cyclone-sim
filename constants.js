@@ -1,6 +1,6 @@
 
 const TITLE = "Tropical Cyclone Simulator";
-const VERSION_NUMBER = "0.6.44";
+const VERSION_NUMBER = "0.6.45";
 
 
 const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
@@ -18,7 +18,7 @@ const STEP = 30;            // Number of milliseconds in real time a simulation 
 const NHEM_DEFAULT_YEAR = moment.utc().year();
 const SHEM_DEFAULT_YEAR = moment.utc().month() < 6 ? NHEM_DEFAULT_YEAR : NHEM_DEFAULT_YEAR+1;
 const DEPRESSION_LETTER = "H";
-const WINDSPEED_ROUNDING = 1;
+const WINDSPEED_ROUNDING = 5;
 // const MAP_DEFINITION = 2;   // normal scaler for the land map
 const EARTH_SB_IDS = {
     world: 0,
@@ -559,7 +559,7 @@ function defineColors(){    // Since p5 color() function doesn't work until setu
     COLORS.land.push([0.75, color(191, 140, 17)]);
     COLORS.land.push([0.7, color(212, 201, 8)]);
     COLORS.land.push([0.68, color(197, 198, 13)]);
-    COLORS.land.push([0.64, color(167, 190, 25)]);
+    COLORS.land.push([0.66, color(167, 190, 25)]);
     COLORS.land.push([0.64, color(147, 181, 43)]);
     COLORS.land.push([0.62, color(100, 173, 65)]);
     COLORS.land.push([0.6, color(89, 168, 89)]);
