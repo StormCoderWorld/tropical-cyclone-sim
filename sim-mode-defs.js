@@ -1757,10 +1757,10 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
     sys.organization *= 100;
     if(!lnd && moisture >= 0.8) {
- sys.organization += sq(map(SST,20,28,30,0,0.75,1.5,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0.6,1.2,true))*3*tropicalness;
      }
  else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
- sys.organization += sq(map(SST,20,28,30,0,0.5,1,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0.45,0.9,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
  sys.organization += sq(map(SST,20,28,30,0,0.3,0.6,true))*3*tropicalness;
@@ -1942,8 +1942,8 @@ sys.organization -= pow(1.3,24-SST)*tropicalness;
 sys.organization = constrain(sys.organization,0,100);
 sys.organization /= 100;
 
-    let targetPressure = 1012-25*log((lnd||SST<25)?1:map(SST,25,30,1,2,true))/log(1.17);
-    targetPressure = lerp(1012,targetPressure,pow(sys.organization,3));
+    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,2,true))/log(1.17);
+    targetPressure = lerp(1015,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
     if(sys.organization<2.51) sys.pressure += random(-2,2.5)*tropicalness;
@@ -2142,7 +2142,7 @@ STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
             sys.type = sys.lowerWarmCore<0.75 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
             break;
         default:
-            sys.type = sys.lowerWarmCore<0.35 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.7 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.35 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
     }
 };
 
