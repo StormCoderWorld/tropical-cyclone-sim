@@ -348,7 +348,7 @@ SPAWN_RULES[SIM_MODE_EasternHemisphere].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_NorthAtlantic].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0108*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0095*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.02-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -369,7 +369,7 @@ SPAWN_RULES[SIM_MODE_Mediterranean].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_EasternPacific].doSpawn = function(b){
     // tropical waves
-    if(random()<0.011*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.01*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.02-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -1287,8 +1287,8 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     modifiers: {
         offSeasonPolarTemp: -14,
         peakSeasonPolarTemp: 4,
-        offSeasonTropicsTemp: 26.5,
-        peakSeasonTropicsTemp: 30.5
+        offSeasonTropicsTemp: 27,
+        peakSeasonTropicsTemp: 30
 
     }
 };
@@ -2133,7 +2133,7 @@ if(lnd>=0.75)
 STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
     switch(sys.type){
         case TROP:
-            sys.type = sys.lowerWarmCore<0.75 ? EXTROP : ((sys.organization < 10 && sys.windSpeed < 34) || sys.windSpeed<29) ? sys.upperWarmCore <0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.75 ? EXTROP : ((sys.organization < 0.3 && sys.windSpeed < 34) || sys.windSpeed<29) ? sys.upperWarmCore <0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
             break;
         case SUBTROP:
             sys.type = sys.lowerWarmCore<0.25 ? EXTROP : ((sys.organization < 0.3 && sys.windSpeed < 25) || sys.windSpeed< 15) ? sys.upperWarmCore<0.15 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.7 ? SUBTROP : TROP;
