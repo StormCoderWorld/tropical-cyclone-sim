@@ -1789,88 +1789,88 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
 
  if (moisture >= 0 && moisture < 0.02) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 8.5;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 8.5;
 }
 else if (moisture >= 0.02 && moisture < 0.04) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 6.25;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 6.25;
 }
 else if (moisture >= 0.04 && moisture < 0.06) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 5.5;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 5.5;
 }
 else if (moisture >= 0.06 && moisture < 0.08) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 5;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 5;
 }
 else if (moisture >= 0.08 && moisture < 0.09) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4.9;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 4.9;
 }
 else if (moisture >= 0.09 && moisture < 0.1) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4.75;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 4.75;
 }
 else if (moisture >= 0.1 && moisture < 0.115) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4.55;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 4.55;
 }
 else if (moisture >= 0.115 && moisture < 0.12) {
     sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4.38;
 }
 else if (moisture >= 0.12 && moisture < 0.15) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4.23;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 4.23;
 }
 else if (moisture >= 0.15 && moisture < 0.18) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 4;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 4;
 }
 else if (moisture >= 0.18 && moisture < 0.2) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.94;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 3.94;
 }
 else if (moisture >= 0.2 && moisture < 0.22) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.6;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 3.6;
 }
 else if (moisture >= 0.22 && moisture < 0.23) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.5;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 3.5;
 }
 else if (moisture >= 0.23 && moisture < 0.26) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 3.25;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 3.25;
 }
 else if (moisture >= 0.26 && moisture < 0.29) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.56;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 2.56;
 }
 else if (moisture >= 0.29 && moisture < 0.3) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2.25;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 2.25;
 }
 else if (moisture >= 0.3 && moisture < 0.31) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 2;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 2;
 }
 else if (moisture >= 0.31 && moisture < 0.325) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.74;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 1.94;
 }
 else if (moisture >= 0.325 && moisture < 0.342) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.55;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 1.86;
 }
 else if (moisture >= 0.342 && moisture < 0.358) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.32;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 1.72;
 }
 else if (moisture >= 0.358 && moisture < 0.37) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.3;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 1.5;
 }
 else if (moisture >= 0.37 && moisture < 0.4) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.19;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 1.39;
 }
 else if (moisture >= 0.4 && moisture < 0.415) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.08;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 1.18;
 }
  else if (moisture >= 0.415 && moisture < 0.43) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 1.02;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 1.02;
 }
 else if (moisture >= 0.43 && moisture < 0.45) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 0.96;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 0.96;
 }
 else if (moisture >= 0.45 && moisture < 0.465) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 0.82;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 0.82;
 }
 else if (moisture >= 0.465 && moisture < 0.48) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 0.78;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 0.78;
 }
 else if (moisture >= 0.48 && moisture < 0.5) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 0, true)) * 0.6;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 0.6;
 }
 else if (moisture >= 0.5 && moisture < 0.53) {
     sys.organization += sq(map(moisture, 0.5, 1, 0, 6, true)) * 0.4;
@@ -1957,50 +1957,50 @@ if (moisture < 0.6) {
     if (!(sys.windSpeed < 40)) {
         sys.windSpeed <= 40; // Or any value below 1013 that you want to set it to
     } else if  (moisture >= 0.6 && moisture < 0.625) {
-        if (!(sys.windSpeed < 45)) {
-            sys.windSpeed <= 45; // Or any value below 1013 that you want to set it to
+        if (!(sys.windSpeed < 20)) {
+            sys.windSpeed <= 20; // Or any value below 1013 that you want to set it to
         } 
     } else if (moisture >= 0.625 && moisture < 0.65) {
-        if (!(sys.windSpeed < 52)) {
-            sys.windSpeed <= 55; // Or any value below 1013 that you want to set it to
+        if (!(sys.windSpeed < 27)) {
+            sys.windSpeed <= 27 && sys.pressure <= 1010; // Or any value below 1013 that you want to set it to
         } 
     } else if (moisture >= 0.65 && moisture < 0.675) {
-        if (!(sys.windSpeed < 60)) {
-            sys.windSpeed <= 60; // Or any value below 1013 that you want to set it to
+        if (!(sys.windSpeed < 34)) {
+            sys.windSpeed <= 34 && sys.pressure <= 1006; // Or any value below 1013 that you want to set it to
     } 
 } } else if  (moisture >= 0.675 && moisture < 0.7) {
-    if (!(sys.windSpeed < 65)) {
-        sys.windSpeed <= 65 && sys.pressure <= 988; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 41)) {
+        sys.windSpeed <= 41 && sys.pressure <= 1001; // Or any value below 1013 that you want to set it to
     } 
 } else if (moisture >= 0.7 && moisture < 0.725) {
-    if (!(sys.windSpeed < 72)) {
-        sys.windSpeed <= 72 && sys.pressure <= 985; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 49)) {
+        sys.windSpeed <= 48 && sys.pressure <= 996; // Or any value below 1013 that you want to set it to
     } 
 } else if (moisture >= 0.725 && moisture < 0.75) {
-    if (!(sys.windSpeed < 78)) {
-        sys.windSpeed <= 78 && sys.pressure <= 982; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 58)) {
+        sys.windSpeed <= 58 && sys.pressure <= 990; // Or any value below 1013 that you want to set it to
 } else if (moisture >= 0.75 && moisture < 0.775) {
-    if (!(sys.windSpeed < 83)) {
-        sys.windSpeed <= 83 && sys.pressure <= 977; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 64)) {
+        sys.windSpeed <= 64 && sys.pressure <= 986; // Or any value below 1013 that you want to set it to
     } 
 } else if (moisture >= 0.775 && moisture < 0.8) {
-    if (!(sys.windSpeed < 89.5)) {
-        sys.windSpeed <= 89.5 && sys.pressure <= 970; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 72)) {
+        sys.windSpeed <= 72 && sys.pressure <= 979; // Or any value below 1013 that you want to set it to
 } else if (moisture >= 0.8 && moisture < 0.825) {
-    if (!(sys.windSpeed < 96)) {
-        sys.windSpeed <= 96 && sys.pressure <= 964; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 85)) {
+        sys.windSpeed <= 85 && sys.pressure <= 970; // Or any value below 1013 that you want to set it to
 } 
 } else if (moisture >= 0.825 && moisture < 0.85) {
-    if (!(sys.windSpeed < 104)) {
-        sys.windSpeed <= 104 && sys.pressure <= 955; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 96)) {
+        sys.windSpeed <= 96 && sys.pressure <= 964; // Or any value below 1013 that you want to set it to
 } 
 } else if (moisture >= 0.85 && moisture < 0.875) {
     if (!(sys.windSpeed < 112)) {
         sys.windSpeed <= 112 && sys.pressure <= 945; // Or any value below 1013 that you want to set it to
 } 
 } else if (moisture >= 0.875 && moisture < 0.9) {
-    if (!(sys.windSpeed < 130)) {
-        sys.windSpeed <= 130 && sys.pressure <= 925; // Or any value below 1013 that you want to set it to
+    if (!(sys.windSpeed < 135)) {
+        sys.windSpeed <= 135 && sys.pressure <= 925; // Or any value below 1013 that you want to set it to
 } 
 }
 }
@@ -2142,7 +2142,7 @@ STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
             sys.type = sys.lowerWarmCore<0.75 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
             break;
         default:
-            sys.type = sys.lowerWarmCore<0.35 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.35 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.15 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
     }
 };
 
