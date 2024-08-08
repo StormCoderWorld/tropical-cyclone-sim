@@ -1,14 +1,14 @@
 
 const TITLE = "Tropical Cyclone Simulator";
-const VERSION_NUMBER = "0.6.45";
+const VERSION_NUMBER = "0.6.451";
 
 
 const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
 const EARLIEST_COMPATIBLE_FORMAT = 0;
 const ENVDATA_COMPATIBLE_FORMAT = 0;
 
-const WIDTH = 1280; // 16:9 aspect ratio
-const HEIGHT = 720;
+const WIDTH = 960; // 16:9 aspect ratio
+const HEIGHT = 540;
 const DIAMETER = 20;    // Storm icon diameter
 const PERLIN_ZOOM = 100;    // Resolution for perlin noise
 const TICK_DURATION = 3600000;  // How long in sim time does a tick last in milliseconds (1 hour)
@@ -469,7 +469,7 @@ const KEY_REPEAT_COOLDOWN = 15;
 const KEY_REPEATER = 5;
 const MAX_SNOW_LAYERS = 100;
 const SNOW_SEASON_OFFSET = 5/6;
-const ENV_LAYER_TILE_SIZE = 30;
+const ENV_LAYER_TILE_SIZE = 16;
 const NC_OFFSET_RANDOM_FACTOR = 4096;
 const ACE_WIND_THRESHOLD = 34;
 const ACE_DIVISOR = 10000;

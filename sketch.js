@@ -88,7 +88,7 @@ function setup(){
     envLayer.colorMode(HSB);
     envLayer.strokeWeight(2);
     envLayer.noStroke();
-    magnifyingGlass = createBuffer(ENV_LAYER_TILE_SIZE*12,ENV_LAYER_TILE_SIZE*12,false,true);
+    magnifyingGlass = createBuffer(ENV_LAYER_TILE_SIZE*150,ENV_LAYER_TILE_SIZE*150,false,true);
     magnifyingGlass.colorMode(HSB);
     magnifyingGlass.strokeWeight(2);
     magnifyingGlass.noStroke();
