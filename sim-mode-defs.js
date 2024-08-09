@@ -1757,19 +1757,19 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
     sys.organization *= 100;
     if(!lnd && moisture >= 0.8) {
- sys.organization += sq(map(SST,20,28,30,0,0.6,1,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,1,2,true))*3*tropicalness;
      }
  else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
- sys.organization += sq(map(SST,20,28,30,0,0.3,0.6,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0.5,1,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
- sys.organization += sq(map(SST,20,28,30,0,0.15,0.3,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0.25,0.5,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.5 && moisture < 0.6) {
- sys.organization += sq(map(SST,20,28,30,0,0.06,0.15,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,0,0.1,0.25,true))*3*tropicalness;
  }
  else if (!lnd && moisture < 0.5) {
- sys.organization += sq(map(SST,20,28,30,0,0,0,true))*3*tropicalness;
+ sys.organization -= sq(map(SST,20,28,30,4,1,0.55,true))*3*tropicalness;
  }
 
 
@@ -1855,13 +1855,13 @@ else if (moisture >= 0.37 && moisture < 0.4) {
     sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 1.39;
 }
 else if (moisture >= 0.4 && moisture < 0.415) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 1.18;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 1.01;
 }
  else if (moisture >= 0.415 && moisture < 0.43) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 1.02;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 0.95;
 }
 else if (moisture >= 0.43 && moisture < 0.45) {
-    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 0.96;
+    sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 0.86;
 }
 else if (moisture >= 0.45 && moisture < 0.465) {
     sys.organization -= sq(map(moisture, 0, 0.5, 6, 1, true)) * 0.82;
@@ -1972,10 +1972,6 @@ sys.organization /= 100;
         SST: SST,
         shear: shear,
         pressure: sys.pressure,
-        upperWarmCore: sys.upperWarmCore,
-        depth: sys.depth,
-        HEIGHT: HEIGHT,
-        hemY: sys.basin.hemY(sys.pos.y)
     });
 };
 
