@@ -1288,7 +1288,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
         offSeasonPolarTemp: -14,
         peakSeasonPolarTemp: 4,
         offSeasonTropicsTemp: 27,
-        peakSeasonTropicsTemp: 30
+        peakSeasonTropicsTemp: 30.5
 
     }
 };
@@ -1298,7 +1298,7 @@ ENV_DEFS[SIM_MODE_SouthAtlantic].SST = {
         offSeasonPolarTemp: -18,
         peakSeasonPolarTemp: -6,
         offSeasonTropicsTemp: 27,
-        peakSeasonTropicsTemp: 29.2
+        peakSeasonTropicsTemp: 29.5
     }
 };
 ENV_DEFS[SIM_MODE_Mediterranean].SST = {
@@ -1307,7 +1307,7 @@ ENV_DEFS[SIM_MODE_Mediterranean].SST = {
         offSeasonPolarTemp: 3,
         peakSeasonPolarTemp: 12,
         offSeasonTropicsTemp: 16,
-        peakSeasonTropicsTemp: 29
+        peakSeasonTropicsTemp: 28
     }
 };
 ENV_DEFS[SIM_MODE_EasternPacific].SST = {
@@ -1334,7 +1334,7 @@ ENV_DEFS[SIM_MODE_WesternPacific].SST = {
         offSeasonPolarTemp: -12,
         peakSeasonPolarTemp: -2,
         offSeasonTropicsTemp: 27.5,
-        peakSeasonTropicsTemp: 30
+        peakSeasonTropicsTemp: 30.5
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].SST = {
@@ -1361,7 +1361,7 @@ ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
         offSeasonPolarTemp: -14,
         peakSeasonPolarTemp: 0,
         offSeasonTropicsTemp: 28,
-        peakSeasonTropicsTemp: 31.2
+        peakSeasonTropicsTemp: 32.2
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
@@ -1379,7 +1379,7 @@ ENV_DEFS[SIM_MODE_Australian].SST = {
         offSeasonPolarTemp: -18,
         peakSeasonPolarTemp: -8,
         offSeasonTropicsTemp: 27,
-        peakSeasonTropicsTemp: 30
+        peakSeasonTropicsTemp: 31
     }
 };
 ENV_DEFS[SIM_MODE_WarmerEarth2C].SST = {
@@ -1388,7 +1388,7 @@ ENV_DEFS[SIM_MODE_WarmerEarth2C].SST = {
         offSeasonPolarTemp: -4.2,
         peakSeasonPolarTemp: 7,
         offSeasonTropicsTemp: 28.2,
-        peakSeasonTropicsTemp: 30.5
+        peakSeasonTropicsTemp: 31.5
     }
 };
 ENV_DEFS[SIM_MODE_PreIndustrial].SST = {
@@ -1397,7 +1397,7 @@ ENV_DEFS[SIM_MODE_PreIndustrial].SST = {
         offSeasonPolarTemp: -16,
         peakSeasonPolarTemp: 0,
         offSeasonTropicsTemp: 26.5,
-        peakSeasonTropicsTemp: 29.5
+        peakSeasonTropicsTemp: 30.5
     }
 };
 ENV_DEFS[SIM_MODE_MiniIceAge].SST = {
