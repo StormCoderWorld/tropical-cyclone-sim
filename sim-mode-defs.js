@@ -592,8 +592,8 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].jetstream = {
 modifiers: {
         peakLat: 0.3,
         antiPeakLat: 0.5,
-        peakRange: 0.4,
-        antiPeakRange: 0.60
+        peakRange: 0.3,
+        antiPeakRange: 0.5
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].jetstream = {
@@ -601,7 +601,7 @@ modifiers: {
         peakLat: 0.30,
         antiPeakLat: 0.54,
         peakRange: 0.42,
-        antiPeakRange: 0.55
+        antiPeakRange: 0.45
     }
 };
 ENV_DEFS[SIM_MODE_Mediterranean].jetstream = {
@@ -1458,8 +1458,8 @@ ENV_DEFS.defaults.moisture = {
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
         let m = map(l,0.5,0.7,map(y,0,HEIGHT,pm,tm),mm,true);
-        m += map(s,-1,1,-0.2,0.2);
-        m += map(v,0,1,-0.4,0.4);
+        m += map(s,-1,1,-0.25,0.25);
+        m += map(v,0,1,-0.25,0.25);
         m = constrain(m,0,1);
         return m;
     },
@@ -1540,7 +1540,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.4,
         tropicalMoisture: 0.5,
-        mountainMoisture: 0.15
+        mountainMoisture: 0.1
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].moisture = {
@@ -1561,7 +1561,7 @@ ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
         tropicalMoisture: 0.54,
-        mountainMoisture: 0.15
+        mountainMoisture: 0.1
     }
 };
 ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
@@ -1575,7 +1575,7 @@ ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.43,
         tropicalMoisture: 0.6,
-        mountainMoisture: 0.08
+        mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_NorthPacific].moisture = {
@@ -1596,14 +1596,14 @@ ENV_DEFS[SIM_MODE_NorthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.34,
         tropicalMoisture: 0.6,
-        mountainMoisture: 0.07
+        mountainMoisture: 0.05
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.33,
         tropicalMoisture: 0.6,
-        mountainMoisture: 0.1
+        mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_Australian].moisture = {
@@ -1617,14 +1617,14 @@ ENV_DEFS[SIM_MODE_WarmerEarth2C].moisture = {
     modifiers: {
         polarMoisture: 0.37,
         tropicalMoisture: 0.6,
-        mountainMoisture: 0.13
+        mountainMoisture: 0.15
     }
 };
 ENV_DEFS[SIM_MODE_PreIndustrial].moisture = {
     modifiers: {
         polarMoisture: 0.3,
         tropicalMoisture: 0.55,
-        mountainMoisture: 0.07
+        mountainMoisture: 0.075
     }
 };
 ENV_DEFS[SIM_MODE_MiniIceAge].moisture = {
@@ -1775,7 +1775,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
     if(!lnd && sys.organization<40) sys.organization += lerp(0,3,nontropicalness);
 
-    if (moisture >= 0.5) {
+    if (moisture >= 0.45) {
         if (!(sys.pressure < 1015)) {
             sys.pressure = 1015; // Or any value that you want to set it to
         }
