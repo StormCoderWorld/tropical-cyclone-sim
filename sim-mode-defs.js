@@ -1458,7 +1458,7 @@ ENV_DEFS.defaults.moisture = {
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
         let m = map(l,0.5,0.7,map(y,0,HEIGHT,pm,tm),mm,true);
-        m += map(s,-1,1,-0.25,0.25);
+        m += map(s,-1,1,-0.35,0.25);
         m += map(v,0,1,-0.25,0.25);
         m = constrain(m,0,1);
         return m;
@@ -1500,7 +1500,7 @@ ENV_DEFS[SIM_MODE_WILD].moisture = {
             [0.5,0.35],[2,0.55],[4,0.6],[5.75,0.58],[6,0.1],[7,0.2],[7.25,0.6],[8.5,0.72],[10,0.55],[11.5,0.35]
         ]);
         let mm = u.modifiers.mountainMoisture;
-        let m = map(l,0.5,0.7,om,mm,true);
+        let m = map(l,0.55,0.75,om,mm,true);
         m += map(v,0,1,-0.3,0.3);
         m = constrain(m,0,1);
         return m;
@@ -1539,7 +1539,7 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.4,
-        tropicalMoisture: 0.5,
+        tropicalMoisture: 0.55,
         mountainMoisture: 0.1
     }
 };
@@ -1560,7 +1560,7 @@ ENV_DEFS[SIM_MODE_Mediterranean].moisture = {
 ENV_DEFS[SIM_MODE_EasternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.32,
-        tropicalMoisture: 0.54,
+        tropicalMoisture: 0.55,
         mountainMoisture: 0.1
     }
 };
@@ -2077,13 +2077,13 @@ if(lnd>=0.75)
 STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
     switch(sys.type){
         case TROP:
-            sys.type = sys.lowerWarmCore<0.75 ? EXTROP : ((sys.organization < 0.3 && sys.windSpeed < 34) || sys.windSpeed<29) ? sys.upperWarmCore <0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.55 ? EXTROP : ((sys.organization < 0.3 && sys.windSpeed < 34) || sys.windSpeed<29) ? sys.upperWarmCore <0.15 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
             break;
         case SUBTROP:
-            sys.type = sys.lowerWarmCore<0.25 ? EXTROP : ((sys.organization < 0.3 && sys.windSpeed < 25) || sys.windSpeed< 15) ? sys.upperWarmCore<0.15 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.7 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.25 ? EXTROP : ((sys.organization < 0.3 && sys.windSpeed < 25) || sys.windSpeed< 15) ? sys.upperWarmCore<0.05 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.7 ? SUBTROP : TROP;
             break;
         case TROPWAVE:
-            sys.type = sys.lowerWarmCore<0.75 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.65 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
             break;
         default:
             sys.type = sys.lowerWarmCore<0.35 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.15 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
