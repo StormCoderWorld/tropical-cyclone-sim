@@ -1458,7 +1458,7 @@ ENV_DEFS.defaults.moisture = {
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
         let m = map(l,0.5,0.7,map(y,0,HEIGHT,pm,tm),mm,true);
-        m += map(s,-1,1,-0.35,0.25);
+        m += map(s,-1,1,-0.15,0.15);
         m += map(v,0,1,-0.3,0.3);
         m = constrain(m,0,1);
         return m;
@@ -1539,7 +1539,7 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.4,
-        tropicalMoisture: 0.5,
+        tropicalMoisture: 0.55,
         mountainMoisture: 0.1
     }
 };
