@@ -590,9 +590,9 @@ modifiers: {
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].jetstream = {
 modifiers: {
-        peakLat: 0.25,
+        peakLat: 0.3,
         antiPeakLat: 0.5,
-        peakRange: 0.35,
+        peakRange: 0.3,
         antiPeakRange: 0.5
     }
 };
@@ -2084,10 +2084,10 @@ if(lnd>=0.75)
 STORM_ALGORITHM.defaults.typeDetermination = function(sys,u){
     switch(sys.type){
         case TROP:
-            sys.type = sys.lowerWarmCore<0.55 ? EXTROP : ((sys.organization < 0.3 && sys.windSpeed < 34) || sys.windSpeed<29) ? sys.upperWarmCore <0.15 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.35 ? EXTROP : ((sys.organization < 0.3 && sys.windSpeed < 34) || sys.windSpeed<29) ? sys.upperWarmCore <0.15 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
             break;
         case SUBTROP:
-            sys.type = sys.lowerWarmCore<0.25 ? EXTROP : ((sys.organization < 0.3 && sys.windSpeed < 25) || sys.windSpeed< 15) ? sys.upperWarmCore<0.05 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.7 ? SUBTROP : TROP;
+            sys.type = sys.lowerWarmCore<0.15 ? EXTROP : ((sys.organization < 0.3 && sys.windSpeed < 25) || sys.windSpeed< 15) ? sys.upperWarmCore<0.05 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.7 ? SUBTROP : TROP;
             break;
         case TROPWAVE:
             sys.type = sys.lowerWarmCore<0.65 ? EXTROP : (sys.organization<0.15 || sys.windSpeed<20) ? sys.upperWarmCore<0.25 ? EXTROP : TROPWAVE : sys.upperWarmCore<0.6 ? SUBTROP : TROP;
