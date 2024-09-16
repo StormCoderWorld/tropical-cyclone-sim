@@ -1102,7 +1102,7 @@ ENV_DEFS.defaults.SSTAnomaly = {
           } else if (v >= -2. && v < -1) { c = lerpColor(chilly,cool,map(v,-2,-1,0,1));
           } else if (v >= -1 && v < -0.2) { c = lerpColor(cool,cNeutral,map(v,-1,-0.2,0,1));
           } else if (v >= -0.2 && v < 0.2) { c = lerpColor(neutral,nearnormal,map(v,-0.2,0.2,0,1));
-          }  else if (v >= 0.2 && v < 1) { c = lerpColor(hNeutral,mild,map(v,-0.2,0.2,0,1));
+          }  else if (v >= 0.2 && v < 1) { c = lerpColor(hNeutral,mild,map(v,0.2,1,0,1));
           }  else if (v >= 1 && v < 2) { c = lerpColor(mild,warm,map(v,1,2,0,1));
           }   else if (v >= 2 && v < 3) { c = lerpColor(warm,hot,map(v,2,3,0,1));
           }   else if (v >= 3 && v < 4) { c = lerpColor(hot,stifling,map(v,3,4,0,1));
@@ -1469,8 +1469,16 @@ ENV_DEFS.defaults.moisture = {
     hueMap: v=>{
         colorMode(HSB);
         let c;
-        if(v<0.5) c = lerpColor(color(10,100,30),color(45,1,90),map(v,0,0.5,0,1));
-        else c = lerpColor(color(120,1,90),color(240,100,30),map(v,0.5,1,0,1));
+         if(v<0.1 && v>= 0) c = lerpColor(color(10,100,30),color(16,96,63),map(v,0,0.1,0,1));
+         else if(v<0.2 && v>= 0.1 ) c = lerpColor(color(20,48,50),color(20,92,58),map(v,0.1,0.2,0,1));
+         else if(v<0.3 && v>= 0.2) c = lerpColor(color(30,95,65),color(38,74,95),map(v,0.2,0.3,0,1));
+         else if(v<0.4 && v>= 0.3) c = lerpColor(color(50,72,42),color(45,1,90),map(v,0.3,0.4,0,1));
+        else if(v<0.5 && v>= 0.4) c = lerpColor(color(76,48,89),color(75,15,79),map(v,0.4,0.5,0,1));
+         else if(v<0.6 && v>= 0.5) c = lerpColor(color(143,143,87),color(144,93,53),map(v,0.5,0.6,0,1));
+         else if(v<0.7 && v>= 0.6) c = lerpColor(color(166,50,75),color(200,87,78),map(v,0.6,0.7,0,1));
+         else if(v<0.8 && v>= 0.7) c = lerpColor(color(232,41,68),color(232,90,80),map(v,0.7,0.8,0,1));
+         else if(v<0.9 && v>= 0.8) c = lerpColor(color(272,78,63),color(272,70,100),map(v,0.8,0.9,0,1));
+        else c = lerpColor(color(288,78,63),color(288,100,100),map(v,0.9,1,0,1));
         colorMode(RGB);
         return c;
     },
