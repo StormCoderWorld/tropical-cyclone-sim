@@ -1288,7 +1288,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
         offSeasonPolarTemp: -14,
         peakSeasonPolarTemp: 4,
         offSeasonTropicsTemp: 27,
-        peakSeasonTropicsTemp: 29
+        peakSeasonTropicsTemp: 29.6
 
     }
 };
@@ -1298,7 +1298,7 @@ ENV_DEFS[SIM_MODE_SouthAtlantic].SST = {
         offSeasonPolarTemp: -18,
         peakSeasonPolarTemp: -6,
         offSeasonTropicsTemp: 27,
-        peakSeasonTropicsTemp: 29.4
+        peakSeasonTropicsTemp: 29.3
     }
 };
 ENV_DEFS[SIM_MODE_Mediterranean].SST = {
