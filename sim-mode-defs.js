@@ -999,8 +999,8 @@ ENV_DEFS.defaults.shear = {
     displayFormat: v=>{
         let speed = round(v.mag()*100)/100;
         let direction = v.heading();
-        // speed is still in "u/hr" (coordinate units per hour) for now
-        return speed + ' u/hr ' + compassHeading(direction);
+        // speed is in "SU" (Shear units per hour or 1 SU = 10knots) for now
+        return speed + ' SU ' + compassHeading(direction);
     },
     vector: true,
     noVectorFlip: true,
@@ -1012,12 +1012,12 @@ let extreme = color(0,100,100)
         let moderate = color(180,100,100);
         let weak = color(270,100,100);
         let c;
-        if(v < 1)
-            c = lerpColor(weak, moderate, map(v,0,1,0,1));
-        else if(v < 3)
-            c = lerpColor(moderate, strong, map(v,1,3,0,1));
+        if(v < 1.5)
+            c = lerpColor(weak, moderate, map(v,0,1.5,0,1));
+        else if(v < 2.5)
+            c = lerpColor(moderate, strong, map(v,1.5,2.5,0,1));
 else 
-c = lerpColor(strong, extreme, map(v,3,5,0,1));
+c = lerpColor(strong, extreme, map(v,2.5,5,0,1));
         colorMode(RGB);
         return c;
     }
