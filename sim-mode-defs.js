@@ -326,7 +326,7 @@ SPAWN_RULES[SIM_MODE_NorthernHemisphere].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_SouthernHemisphere].doSpawn = function(b){
     // tropical waves
-    if(random()<0.012*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.012*sq((seasonalSine(b.tick+(1/12))+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.03-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -404,7 +404,7 @@ SPAWN_RULES[SIM_MODE_SouthPacific].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_NorthIndianOcean].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0015*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0015*sq((seasonalSine(b.tick*2 -(1.5/12)+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -418,7 +418,7 @@ SPAWN_RULES[SIM_MODE_SouthIndianOcean].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_Australian].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0055*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0055*sq((seasonalSine(b.tick+(1/12))+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.025-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
