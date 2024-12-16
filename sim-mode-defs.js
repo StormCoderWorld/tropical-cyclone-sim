@@ -411,7 +411,7 @@ SPAWN_RULES[SIM_MODE_NorthIndianOcean].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_SouthIndianOcean].doSpawn = function(b){
     // tropical waves
-    if(random()<0.006*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.006*sq((seasonalSine(b.tick+(1/12))+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.02-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
