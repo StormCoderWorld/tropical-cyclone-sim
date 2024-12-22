@@ -10,7 +10,7 @@ class Storm{
         this.sbData = {};
 
         this.rotation = random(TAU);
-        this.rotationUpdateTimestamp = performance.now();
+
         this.designations = {};
         this.designations.primary = [];
         this.designations.secondary = [];
@@ -216,9 +216,7 @@ class Storm{
             let scaleIconData = scale.getIcon(advX);
             let ty = advX.type;
             let name = this.getNameByTick(viewTick);
-            let timestamp = performance.now();
-            this.rotation -= 0.001 * (timestamp - this.rotationUpdateTimestamp) * pow(1.0115, min(270,st));
-            this.rotationUpdateTimestamp = timestamp;
+            this.rotation -= 0.03*pow(1.01,ktsToMph(min(270,st)));
             let drawArms = ()=>{
                 let a = scaleIconData.arms;
                 if(tropOrSub(ty) && a){
