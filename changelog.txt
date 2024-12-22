@@ -1,5 +1,19 @@
 About: A p5.js tropical cyclone simulation game
 
+v0.4.19 (2024-03-20):
+    * Updated Eastern Pacific name list to reflect recent replacements for retired names
+v0.4.18 (2024-03-14):
+    * Updated Western Pacific name list to reflect recent replacements for retired names
+v0.4.17 (2024-03-06):
+    * Optimization to track forecast cone
+    % Upgraded p5.js from 0.8.0 to 1.9.1
+        > Indeed a large jump - be on the lookout for any bugs or issues that might arise
+v0.4.16 (2024-03-02):
+    * Another small tweak to make the track forecast cone a little less janky
+v0.4.15 (2024-02-29):
+    * Another tweak to the appearance of the track forecast cone
+v0.4.14 (2024-01-01):
+    * Updated the PAGASA, Australian region, South-West Indian Ocean, South Pacific, and Mediterranean name lists
 v0.4.13 (2023-12-31):
     * Split some of the new basin creation options into an "Advanced" menu
     * Map types now have automatic presets for the advanced basin options

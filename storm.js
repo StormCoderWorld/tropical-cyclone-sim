@@ -305,19 +305,39 @@ class Storm{
             }
             if(selectedStorm===this && this.basin.viewingPresent() && this.current){
                 forecastTracks.clear();
-                let p = this.current.trackForecast;
-                const coneCircle = hour=>{
+                const points = this.current.trackForecast;
+                let p0;
+                let p1 = this.record[this.record.length - 1].pos;
+                let rVec = createVector(0);
+                let r0 = 0;
+                let r1 = 0.01;
+                for(let hour of [12, 24, 36, 48, 60, 72, 96, 120]){
                     const n = hour / ADVISORY_TICKS - 1;
-                    forecastTracks.circle(p[n].x, p[n].y, hour * 0.7);
+                    r0 = r1;
+                    r1 = hour * 0.7 / 2;
+                    p0 = p1;
+                    p1 = points[n];
+                    forecastTracks.circle(p1.x, p1.y, r1 * 2);
+                    forecastTracks.beginShape();
+                    rVec.set(p1.x, p1.y);
+                    rVec.sub(p0.x, p0.y);
+                    rVec.rotate(PI / 2);
+                    rVec.setMag(r0);
+                    forecastTracks.vertex(p0.x + rVec.x, p0.y + rVec.y);
+                    rVec.rotate(PI);
+                    forecastTracks.vertex(p0.x + rVec.x, p0.y + rVec.y);
+                    rVec.setMag(r1);
+                    forecastTracks.vertex(p1.x + rVec.x, p1.y + rVec.y);
+                    rVec.rotate(PI);
+                    forecastTracks.vertex(p1.x + rVec.x, p1.y + rVec.y);
+                    forecastTracks.endShape(); 
                 };
-                coneCircle(12);
-                coneCircle(24);
-                coneCircle(36);
-                coneCircle(48);
-                coneCircle(60);
-                coneCircle(72);
-                coneCircle(96);
-                coneCircle(120);
+
+                
+                forecastTracks.erase(128, 0);
+                forecastTracks.rect(0, 0, WIDTH, HEIGHT);
+                forecastTracks.noErase();
+
             }
         }
     }

@@ -65,9 +65,11 @@ function setup(){
     stormIcons = createBuffer();
     stormIcons.strokeWeight(3);
     forecastTracks = createBuffer();
-    forecastTracks.strokeWeight(2);
-    forecastTracks.stroke(240,240,0);
-    forecastTracks.noFill();
+    // forecastTracks.strokeWeight(2);
+    // forecastTracks.stroke(240,240,0);
+    // forecastTracks.noFill();
+    forecastTracks.noStroke();
+    forecastTracks.fill(255);
     landBuffer = createImage(fullW,fullH);
     landBuffer.loadPixels();
     // landBuffer.noStroke();
@@ -86,7 +88,7 @@ function setup(){
     envLayer.colorMode(HSB);
     envLayer.strokeWeight(2);
     envLayer.noStroke();
-    magnifyingGlass = createBuffer(ENV_LAYER_TILE_SIZE*4,ENV_LAYER_TILE_SIZE*4,false,true);
+    magnifyingGlass = createBuffer(ENV_LAYER_TILE_SIZE*150,ENV_LAYER_TILE_SIZE*150,false,true);
     magnifyingGlass.colorMode(HSB);
     magnifyingGlass.strokeWeight(2);
     magnifyingGlass.noStroke();

@@ -1,5 +1,7 @@
-const TITLE = "Cyclone Simulator";
-const VERSION_NUMBER = "0.5.1";
+
+const TITLE = "Tropical Cyclone Simulator";
+const VERSION_NUMBER = "0.6.46.3";
+
 
 const SAVE_FORMAT = 7;  // Format #7 in use starting in v0.4
 const EARLIEST_COMPATIBLE_FORMAT = 0;
@@ -12,7 +14,7 @@ const PERLIN_ZOOM = 100;    // Resolution for perlin noise
 const TICK_DURATION = 3600000;  // How long in sim time does a tick last in milliseconds (1 hour)
 const ADVISORY_TICKS = 6;    // Number of ticks per advisory
 const YEAR_LENGTH = 365.2425*24;        // The length of a year in ticks; used for seasonal activity
-const STEP = 30;            // Number of milliseconds in real time a simulation step lasts at default speed
+const STEP = 41.06;            // Number of milliseconds in real time a simulation step lasts at default speed
 const NHEM_DEFAULT_YEAR = moment.utc().year();
 const SHEM_DEFAULT_YEAR = moment.utc().month() < 6 ? NHEM_DEFAULT_YEAR : NHEM_DEFAULT_YEAR+1;
 const DEPRESSION_LETTER = "H";
@@ -62,8 +64,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         landBiasFactors: [
             5/8,
             -0.3,
-            -0.3,
-            0.15
+            -0.10,
+            0.3
         ],
         optionPresets: {
             designations: 22
@@ -74,9 +76,9 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         form: "linear",
         landBiasFactors: [
             1/2,
-            0.15,
-            -0.2,
-            -0.7
+            0.3,
+            -0.14,
+            -0.4
         ],
         optionPresets: {
             designations: 22
@@ -88,8 +90,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
         landBiasFactors: [
             1/2,
             -0.08,
-            -0.58,
-            -0.98
+            -0.28,
+            -0.58
         ],
         optionPresets: {
             designations: 22
@@ -130,8 +132,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
     {   
 		label: "Atlantic Ocean",
         form: 'earth',
-        west: -110,
-        east: 15,
+        west: -116,
+        east: 36,
         north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.atl,
@@ -139,13 +141,15 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             hem: 1,
             scale: 0,
             designations: 0
+
+
         }
     },
     {   
 		label: "Eastern Pacific",
         form: 'earth',
-        west: -180,
-        east: -74.33,
+        west: 150,
+        east: -80,
         north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.epac,
@@ -153,13 +157,31 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             hem: 1,
             scale: 0,
             designations: 1
+
         }
     },
+{   
+		label: "Northeast Pacific North Atlantic Combo",
+        form: 'earth',
+        west: -130,
+        east: 45,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nhem,
+        optionPresets: {
+            hem: 1,
+            scale: 0,
+            designations: 0
+
+
+        }
+    },
+
     {   
 		label: "Western Pacific",
         form: 'earth',
-        west: 94.42,
-        east: -140,
+        west: 100,
+        east: -165,
         north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.wpac,
@@ -167,13 +189,15 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             hem: 1,
             scale: 3,
             designations: 3
+
+
         }
     },
  {   
 		label: "Central Pacific",
         form: 'earth',
-        west: 180,
-        east: -140,
+        west: 130,
+        east: -115,
         north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.cpac,
@@ -181,27 +205,48 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             hem: 1,
             scale: 0,
             designations: 2
+
+
         }
     },
- {   
-		label: "Entire North Pacific",
+{   
+		label: "Western Pacific and Central Pacific",
         form: 'earth',
-        west: 94.42,
-        east: -77.29,
+        west: 80,
+        east: -125,
         north: 70,
         south: 0,
-        mainSubBasin: EARTH_SB_IDS.npac,
+        mainSubBasin: EARTH_SB_IDS.nhem,
         optionPresets: {
             hem: 1,
             scale: 3,
             designations: 3
+
+
+        }
+    },
+
+ {   
+		label: "Entire North Pacific",
+        form: 'earth',
+        west: 98,
+        east: -77.29,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nhem,
+        optionPresets: {
+            hem: 1,
+            scale: 3,
+            designations: 3
+
+
         }
     },
     {   
 		label: "Northern Indian Ocean",
         form: 'earth',
-        west: 25.95,
-        east: 131.62,
+        west: 10,
+        east: 150,
         north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.nio,
@@ -209,27 +254,48 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             hem: 1,
             scale: 4,
             designations: 5
+
+
         }
     },
  {   
+		label: "Northern Indian Ocean and Western Pacific",
+        form: 'earth',
+        west: 10,
+        east: 148,
+        north: 70,
+        south: 0,
+        mainSubBasin: EARTH_SB_IDS.nio,
+        optionPresets: {
+            hem: 1,
+            scale: 4,
+            designations: 5
+
+
+        }
+    },
+
+ {   
 		label: "Earth Northern Hemisphere",
         form: 'earth',
-        west: -180,
-        east: 180,
-        north: 90,
+        west: 0.01,
+        east: 0,
+        north: 70,
         south: 0,
         mainSubBasin: EARTH_SB_IDS.nhem,
         optionPresets: {
             hem: 1,
             scale: 3,
             designations: 3
+
+
         }
     },
 
     {   
 		label: "Australian Region",
         form: 'earth',
-        west: 82.03,
+        west: 80,
         east: 180,
         north: 0,
         south: -70,
@@ -238,13 +304,15 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             hem: 2,
             scale: 2,
             designations: 6
+
+
         }
     },
-    {   
-		label: "Entire South Pacific",
+ {   
+		label: "South Pacific",
         form: 'earth',
-        west: 138.2,
-        east: -77.29,
+        west: 100,
+        east: -120,
         north: 0,
         south: -70,
         mainSubBasin: EARTH_SB_IDS.spac,
@@ -252,13 +320,32 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             hem: 2,
             scale: 2,
             designations: 7
+
+
+        }
+    },
+
+    {   
+		label: "Entire South Pacific",
+        form: 'earth',
+        west: 138.2,
+        east: -77.29,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.shem,
+        optionPresets: {
+            hem: 2,
+            scale: 2,
+            designations: 7
+
+
         }
     },
     {   
 		label: "South-West Indian Ocean",
         form: 'earth',
-        west: 17.25,
-        east: 136.59,
+        west: 10,
+        east: 165,
         north: 0,
         south: -70,
         mainSubBasin: EARTH_SB_IDS.swio,
@@ -266,13 +353,47 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             hem: 2,
             scale: 5,
             designations: 8
+
+
+        }
+    },
+ {   
+		label: "Australian and Southwest Indian Ocean",
+        form: 'earth',
+        west: 10,
+        east: 180,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.shem,
+        optionPresets: {
+            hem: 2,
+            scale: 5,
+            designations: 8
+
+
+        }
+    },
+{   
+		label: "South Pacific and Southern Indian Ocean",
+        form: 'earth',
+        west: 17.25,
+        east: -120,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.shem,
+        optionPresets: {
+            hem: 2,
+            scale: 5,
+            designations: 8
+
+
         }
     },
     {   
 		label: "South Atlantic",
         form: 'earth',
-        west: -180,
-        east: 180,
+        west: -70,
+        east: 30,
         north: 0,
         south: -70,
         mainSubBasin: EARTH_SB_IDS.satl,
@@ -280,20 +401,41 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             hem: 2,
             scale: 0,
             designations: 9
+
+
         }
     },
+{   
+		label: "South Atlantic and Indian Oceans",
+        form: 'earth',
+        west: -70.,
+        east: 60,
+        north: 0,
+        south: -70,
+        mainSubBasin: EARTH_SB_IDS.shem,
+        optionPresets: {
+            hem: 2,
+            scale: 0,
+            designations: 9
+
+
+        }
+    },
+
  {   
 		label: "Earth Southern Hemisphere",
         form: 'earth',
         west: -180,
         east: 180,
         north: 0,
-        south: -90,
+        south: -70,
         mainSubBasin: EARTH_SB_IDS.shem,
         optionPresets: {
             hem: 2,
             scale: 0,
             designations: 9
+
+
         }
     },
 
@@ -309,6 +451,8 @@ const MAP_TYPES = [     // Land generation controls and option presets for diffe
             hem: 1,
             scale: 0,
             designations: 10
+
+
         }
     }
 ];
@@ -325,14 +469,14 @@ const KEY_REPEAT_COOLDOWN = 15;
 const KEY_REPEATER = 5;
 const MAX_SNOW_LAYERS = 100;
 const SNOW_SEASON_OFFSET = 5/6;
-const ENV_LAYER_TILE_SIZE = 20;
+const ENV_LAYER_TILE_SIZE = 16;
 const NC_OFFSET_RANDOM_FACTOR = 4096;
 const ACE_WIND_THRESHOLD = 34;
 const ACE_DIVISOR = 10000;
 const DAMAGE_DIVISOR = 1000;
 const ENVDATA_NOT_FOUND_ERROR = "envdata-not-found";
 const LOADED_SEASON_REQUIRED_ERROR = "loaded-season-required";
-const LOAD_MENU_BUTTONS_PER_PAGE = 6;
+const LOAD_MENU_BUTTONS_PER_PAGE = 8;
 const DEFAULT_MAIN_SUBBASIN = 0;
 const DEFAULT_OUTBASIN_SUBBASIN = 255;
 const DESIG_CROSSMODE_ALWAYS = 0;
@@ -410,15 +554,20 @@ function defineColors(){    // Since p5 color() function doesn't work until setu
     COLORS.storm[TROPWAVE] = color(130,130,240);
     COLORS.storm.extL = "red";
     COLORS.land = [];
-    COLORS.land.push([0.85, color(190,190,190)]);
-    COLORS.land.push([0.8, color(160,160,160)]);
-    COLORS.land.push([0.75, color(145,115,90)]);
-    COLORS.land.push([0.7, color(160,125,100)]);
-    COLORS.land.push([0.65, color(35,145,35)]);
-    COLORS.land.push([0.6, color(35,160,35)]);
-    COLORS.land.push([0.55, color(30,175,30)]);
-    COLORS.land.push([0.53, color(205,205,105)]);
-    COLORS.land.push([0.5, color(230,230,105)]);
+    COLORS.land.push([0.85, color(110,115,110)]);
+    COLORS.land.push([0.8, color(163, 82, 22)]);
+    COLORS.land.push([0.75, color(191, 140, 17)]);
+    COLORS.land.push([0.7, color(212, 201, 8)]);
+    COLORS.land.push([0.68, color(197, 198, 13)]);
+    COLORS.land.push([0.66, color(167, 190, 25)]);
+    COLORS.land.push([0.64, color(147, 181, 43)]);
+    COLORS.land.push([0.62, color(100, 173, 65)]);
+    COLORS.land.push([0.6, color(89, 168, 89)]);
+    COLORS.land.push([0.58, color(83, 175, 74)]);
+    COLORS.land.push([0.56, color(77, 189, 60)]);
+    COLORS.land.push([0.54, color(8,207,25)]);
+ COLORS.land.push([0.52, color(1, 87, 15)]);
+    COLORS.land.push([0.51, color(9, 130, 106)]);
     COLORS.snow = color(240);
     COLORS.outBasin = color(45,70,120);
     COLORS.subBasinOutline = color(255,255,0);
