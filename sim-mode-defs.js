@@ -404,7 +404,7 @@ SPAWN_RULES[SIM_MODE_SouthPacific].doSpawn = function(b){
 };
 SPAWN_RULES[SIM_MODE_NorthIndianOcean].doSpawn = function(b){
     // tropical waves
-    if(random()<0.0015*sq((seasonalSine(b.tick)+1)/2)) b.spawnArchetype('tw');
+    if(random()<0.0035*sq((seasonalSine(2*b.tick-(1/12))+1)/2)) b.spawnArchetype('tw');
 
     // extratropical cyclones
     if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
@@ -655,9 +655,9 @@ modifiers: {
 ENV_DEFS[SIM_MODE_NorthIndianOcean].jetstream = {
 modifiers: {
         peakLat: 0.25,
-        antiPeakLat: 0.55,
+        antiPeakLat: 0.45,
         peakRange: 0.30,
-        antiPeakRange: 0.50
+        antiPeakRange: 0.40
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].jetstream = {
@@ -1350,7 +1350,7 @@ ENV_DEFS[SIM_MODE_SouthPacific].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -18,
-        peakSeasonPolarTemp: -6,
+        peakSeasonPolarTemp: -12,
         offSeasonTropicsTemp: 27.5,
         peakSeasonTropicsTemp: 29.5
     }
@@ -1360,15 +1360,15 @@ ENV_DEFS[SIM_MODE_NorthIndianOcean].SST = {
     modifiers: {
         offSeasonPolarTemp: -14,
         peakSeasonPolarTemp: 0,
-        offSeasonTropicsTemp: 28,
-        peakSeasonTropicsTemp: 31.2
+        offSeasonTropicsTemp: 28.4,
+        peakSeasonTropicsTemp: 31.4
     }
 };
 ENV_DEFS[SIM_MODE_SouthIndianOcean].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -15,
-        peakSeasonPolarTemp: -6.5,
+        peakSeasonPolarTemp: -10.5,
         offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 29.8
     }
@@ -1377,7 +1377,7 @@ ENV_DEFS[SIM_MODE_Australian].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: -18,
-        peakSeasonPolarTemp: -8,
+        peakSeasonPolarTemp: -12,
         offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 30
     }
@@ -1509,7 +1509,7 @@ ENV_DEFS[SIM_MODE_WILD].moisture = {
         ]);
         let mm = u.modifiers.mountainMoisture;
         let m = map(l,0.55,0.75,om,mm,true);
-        m += map(v,0,1,-0.3,0.3);
+        m += map(v,0,1,-0.1,0.3);
         m = constrain(m,0,1);
         return m;
     }
@@ -1603,7 +1603,7 @@ ENV_DEFS[SIM_MODE_SouthPacific].moisture = {
 ENV_DEFS[SIM_MODE_NorthIndianOcean].moisture = {
     modifiers: {
         polarMoisture: 0.34,
-        tropicalMoisture: 0.6,
+        tropicalMoisture: 0.65,
         mountainMoisture: 0.05
     }
 };
@@ -1767,16 +1767,16 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     if(!lnd && moisture >= 0.9) {
  sys.organization += sq(map(SST,20,28,30,0,0.5,1,true))*3*tropicalness;
      } else if (!lnd && moisture >= 0.8 && moisture < 0.9) {
-        sys.organization += sq(map(SST,20,28,30,0,0.4,0.8,true))*3*tropicalness;
+        sys.organization += sq(map(SST,26,28,30,32,0.2,0.4,0.8,1.6,true))*3*tropicalness;
         }
  else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
- sys.organization += sq(map(SST,20,28,30,0,0.3,0.6,true))*3*tropicalness;
+ sys.organization += sq(map(SST,26,28,30,32,0.15,0.3,0.6,1.2,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
- sys.organization += sq(map(SST,20,28,30,0,0.2,0.4,true))*3*tropicalness;
+ sys.organization += sq(map(SST,26,28,30,32,0.1,0.2,0.4,0.8,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.5 && moisture < 0.6) {
- sys.organization += sq(map(SST,20,28,30,0,0.1,0.2,true))*3*tropicalness;
+ sys.organization += sq(map(SST,26,28,30,32,0.05,0.1,0.2,0.4,true))*3*tropicalness;
  }
 
 
