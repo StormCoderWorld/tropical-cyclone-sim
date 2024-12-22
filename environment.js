@@ -792,7 +792,7 @@ class Land{
                     if(SHem)
                         l = 1 - l;
                     let h = 1 - eleCache[src[index]];
-                    let p = l > 0 ? Math.ceil((snowLayers / 0.2) * (h / l - 0.3)) : h < 0 ? 0 : snowLayers;
+                    let p = l > 0 ? Math.ceil((snowLayers / 0.3) * (h / l - 0.3)) : h < 0 ? 0 : snowLayers;
                     for(let k = 0; k < snowLayers; k++){
                         if(k >= p){
                             snow[k].pixels[index] = snowColor.r;

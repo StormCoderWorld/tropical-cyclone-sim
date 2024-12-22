@@ -1767,16 +1767,16 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     if(!lnd && moisture >= 0.9) {
  sys.organization += sq(map(SST,20,28,30,0,0.5,1,true))*3*tropicalness;
      } else if (!lnd && moisture >= 0.8 && moisture < 0.9) {
-        sys.organization += sq(map(SST,26,28,30,32,0.2,0.4,0.8,1.6,true))*3*tropicalness;
+        sys.organization += sq(map(SST,20,28,30,32,0,0.4,0.8,1.6,true))*3*tropicalness;
         }
  else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
- sys.organization += sq(map(SST,26,28,30,32,0.15,0.3,0.6,1.2,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,32,0,0.3,0.6,1.2,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
- sys.organization += sq(map(SST,26,28,30,32,0.1,0.2,0.4,0.8,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,32,0,0.2,0.4,0.8,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.5 && moisture < 0.6) {
- sys.organization += sq(map(SST,26,28,30,32,0.05,0.1,0.2,0.4,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,32,0,0.1,0.2,0.4,true))*3*tropicalness;
  }
 
 
