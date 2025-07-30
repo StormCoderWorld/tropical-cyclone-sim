@@ -1957,7 +1957,7 @@ sys.organization -= pow(1.3,20-SST)*tropicalness;
 sys.organization = constrain(sys.organization,0,100);
 sys.organization /= 100;
 
-    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,1.55,true))/log(1.17);
+    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,1.65,true))/log(1.17);
     targetPressure = lerp(1015,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
@@ -1967,7 +1967,7 @@ sys.organization /= 100;
     sys.pressure += map(jet,0,75,5*pow(1-sys.depth,4),0,true);
 
     let targetWind = map(sys.pressure, 1012, 900, 10, 175,true)*map(sys.lowerWarmCore,1,0,1,0.6,true);
-    sys.windSpeed = lerp(sys.windSpeed,targetWind,0.2);
+    sys.windSpeed = lerp(sys.windSpeed,targetWind,0.15);
     let targetDepth = map(
         sys.upperWarmCore,
         0,1,
