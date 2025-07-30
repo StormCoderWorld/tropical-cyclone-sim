@@ -1792,7 +1792,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     // if(lnd && sys.organization<70 && moisture>0.45) sys.organization += pow(5,map(moisture,0.45,0.65,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,5.5,0.93,true);
-    sys.organization -= map(moisture,0.4,0.8,4,2,true)*shear;
+    sys.organization -= map(moisture,0.4,0.8,4,1.25,true)*shear;
 
 
 
