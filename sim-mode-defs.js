@@ -1767,10 +1767,10 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     if(!lnd && moisture >= 0.9) {
  sys.organization += sq(map(SST,20,28,30,0,0.5,1,true))*3*tropicalness;
      } else if (!lnd && moisture >= 0.8 && moisture < 0.9) {
-        sys.organization += sq(map(SST,20,28,30,32,0,0.1,0.3,0.6,true))*3*tropicalness;
+        sys.organization += sq(map(SST,20,28,30,32,0,0.2,0.4,0.6,true))*3*tropicalness;
         }
  else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
- sys.organization += sq(map(SST,20,28,30,32,0,0.06,0.2,0.4,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,32,0,0.1,0.2,0.4,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
  sys.organization += sq(map(SST,20,28,30,32,0,0.03,0.1,0.2,true))*3*tropicalness;
@@ -1957,7 +1957,7 @@ sys.organization -= pow(1.3,20-SST)*tropicalness;
 sys.organization = constrain(sys.organization,0,100);
 sys.organization /= 100;
 
-    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,1.05,true))/log(1.17);
+    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,1.4,true))/log(1.17);
     targetPressure = lerp(1015,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
