@@ -1547,7 +1547,7 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.4,
-        tropicalMoisture: 0.55,
+        tropicalMoisture: 0.65,
         mountainMoisture: 0.1
     }
 };
@@ -1957,7 +1957,7 @@ sys.organization -= pow(1.3,20-SST)*tropicalness;
 sys.organization = constrain(sys.organization,0,100);
 sys.organization /= 100;
 
-    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,1.4,true))/log(1.17);
+    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,1.55,true))/log(1.17);
     targetPressure = lerp(1015,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
