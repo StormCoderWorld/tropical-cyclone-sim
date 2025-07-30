@@ -901,7 +901,7 @@ ENV_DEFS.defaults.ULSteering = {
         troughExponentMax: 6,
         troughAngle: -Math.PI/16,
         hadleyUpperBound: 6,
-        hadleyLowerBound: 1.5,
+        hadleyLowerBound: 1.75,
         hadleyAngleMin: -Math.PI/16,
         hadleyAngleMax: -15*Math.PI/16,
         noiseBase: 1.5,
@@ -1173,7 +1173,7 @@ ENV_DEFS.defaults.SST = {
         let pspt = u.modifiers.peakSeasonPolarTemp;
         let ostt = u.modifiers.offSeasonTropicsTemp;
         let pstt = u.modifiers.peakSeasonTropicsTemp;
-        let t = lerp(map(s,-1,1,ospt,pspt), map(s,-1,1,ostt,pstt),h);
+        let t = lerp(map(s,-0.67,1,ospt,pspt), map(s,-1,1.05,ostt,pstt),h);
         return t+anom;
     }, 
 
@@ -1285,8 +1285,8 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].SST = {
 ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: -14,
-        peakSeasonPolarTemp: 4,
+        offSeasonPolarTemp: -8,
+        peakSeasonPolarTemp: -2,
         offSeasonTropicsTemp: 27,
         peakSeasonTropicsTemp: 29.6
 
@@ -1767,16 +1767,16 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     if(!lnd && moisture >= 0.9) {
  sys.organization += sq(map(SST,20,28,30,0,0.5,1,true))*3*tropicalness;
      } else if (!lnd && moisture >= 0.8 && moisture < 0.9) {
-        sys.organization += sq(map(SST,20,28,30,32,0,0.4,0.8,1.6,true))*3*tropicalness;
+        sys.organization += sq(map(SST,20,28,30,32,0,0.1,0.3,0.6,true))*3*tropicalness;
         }
  else if (!lnd && moisture >= 0.7 && moisture < 0.8) {
- sys.organization += sq(map(SST,20,28,30,32,0,0.3,0.6,1.2,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,32,0,0.06,0.2,0.5,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.6 && moisture < 0.7) {
- sys.organization += sq(map(SST,20,28,30,32,0,0.2,0.4,0.8,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,32,0,0.03,0.1,0.3,true))*3*tropicalness;
  }
  else if (!lnd && moisture >= 0.5 && moisture < 0.6) {
- sys.organization += sq(map(SST,20,28,30,32,0,0.1,0.2,0.4,true))*3*tropicalness;
+ sys.organization += sq(map(SST,20,28,30,32,0,0.001,0.05,0.1,true))*3*tropicalness;
  }
 
 
@@ -1788,11 +1788,11 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
             sys.pressure = 1012; // Or any value that you want to set it to
         }
     }
-    // if(lnd) sys.organization -= pow(10,map(lnd,0.5,1,-3,1));
-    // if(lnd && sys.organization<70 && moisture>0.3) sys.organization += pow(5,map(moisture,0.3,0.5,-1,1,true))*tropicalness;
+    // if(lnd) sys.organization -= pow(10,map(lnd,0.5,0.7,-5,1.5));
+    // if(lnd && sys.organization<70 && moisture>0.45) sys.organization += pow(5,map(moisture,0.45,0.65,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
-    sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,4.7,1.2,true);
-    sys.organization -= map(moisture,0,0.8,6,1,true)*shear;
+    sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,5.5,0.93,true);
+    sys.organization -= map(moisture,0.3,0.9,5,1,true)*shear;
 
 
 
