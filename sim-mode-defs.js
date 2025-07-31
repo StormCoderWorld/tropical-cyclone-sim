@@ -1792,7 +1792,7 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     // if(lnd && sys.organization<70 && moisture>0.45) sys.organization += pow(5,map(moisture,0.45,0.65,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
     sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,6,0.7,true);
-    sys.organization -= map(moisture,0.4,0.8,4.5,1.25,true)*shear;
+    sys.organization -= map(moisture,0.55,0.85,1.5,0.5,true)*(shear**2.5129415947321);
 
 
 
@@ -1957,7 +1957,7 @@ sys.organization -= pow(1.3,20-SST)*tropicalness;
 sys.organization = constrain(sys.organization,0,100);
 sys.organization /= 100;
 
-    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,1.65,true))/log(1.17);
+    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,2,true))/log(1.17);
     targetPressure = lerp(1015,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
