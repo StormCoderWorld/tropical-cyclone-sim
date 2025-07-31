@@ -1784,10 +1784,10 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
 
 
 
- if (moisture >= 0 && moisture < 0.7) {
-    sys.organization -= sq(map(moisture, 0.3, 0.7, 3, -1, true)) * ((1/moisture)**2);
-} else if (moisture >= 0.7 && moisture <= 1) {
-    sys.organization += sq(map(moisture, 0.7, 1, 1, 2, true))**3 ;
+ if (moisture >= 0 && moisture < 0.6) {
+    sys.organization -= sq(map(moisture, 0.3, 0.6, 3, -1, true)) * ((1/moisture)**2);
+} else if (moisture >= 0.6 && moisture <= 1) {
+    sys.organization += sq(map(moisture, 0.6, 1, 0.8, 3, true))**3 ;
 }
 sys.organization -= pow(1.3,20-SST)*tropicalness;
 sys.organization = constrain(sys.organization,0,100);
