@@ -1288,7 +1288,7 @@ ENV_DEFS[SIM_MODE_NorthAtlantic].SST = {
         offSeasonPolarTemp: -8,
         peakSeasonPolarTemp: -2,
         offSeasonTropicsTemp: 27.3,
-        peakSeasonTropicsTemp: 30
+        peakSeasonTropicsTemp: 29.6
 
     }
 };
@@ -1457,7 +1457,7 @@ ENV_DEFS.defaults.moisture = {
         let pm = u.modifiers.polarMoisture;
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
-        let m = map(l,0.5,0.7,map(y,0,HEIGHT,pm,tm),mm,true);
+        let m = map(l,0.52,0.75,map(y,0,HEIGHT,pm,tm),mm,true);
         m += map(s,-1,1,-0.15,0.2);
         m += map(v,0,1,-0.3,0.3);
         m = constrain(m,0,1);
@@ -1547,7 +1547,7 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
         polarMoisture: 0.4,
-        tropicalMoisture: 0.65,
+        tropicalMoisture: 0.58,
         mountainMoisture: 0.1
     }
 };
@@ -1582,7 +1582,7 @@ ENV_DEFS[SIM_MODE_CentralPacific].moisture = {
 ENV_DEFS[SIM_MODE_WesternPacific].moisture = {
     modifiers: {
         polarMoisture: 0.43,
-        tropicalMoisture: 0.6,
+        tropicalMoisture: 0.65,
         mountainMoisture: 0.05
     }
 };
@@ -1791,8 +1791,8 @@ STORM_ALGORITHM.defaults.core = function(sys,u){
     // if(lnd) sys.organization -= pow(10,map(lnd,0.5,0.7,-5,1.5));
     // if(lnd && sys.organization<70 && moisture>0.45) sys.organization += pow(5,map(moisture,0.45,0.65,-1,1,true))*tropicalness;
     sys.organization -= pow(2,4-((HEIGHT-sys.basin.hemY(sys.pos.y))/(HEIGHT*0.01)));
-    sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,5,0.95,true);
-    sys.organization -= map(moisture,0.4,0.8,4,1,true)*shear;
+    sys.organization -= (pow(map(sys.depth,0,1,1.17,1.31),shear)-1)*map(sys.depth,0,1,6,0.7,true);
+    sys.organization -= map(moisture,0.4,0.8,4.5,1.25,true)*shear;
 
 
 
@@ -1957,7 +1957,7 @@ sys.organization -= pow(1.3,20-SST)*tropicalness;
 sys.organization = constrain(sys.organization,0,100);
 sys.organization /= 100;
 
-    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,1.7,true))/log(1.17);
+    let targetPressure = 1015-25*log((lnd||SST<25)?1:map(SST,25,30,1,1.65,true))/log(1.17);
     targetPressure = lerp(1015,targetPressure,pow(sys.organization,3));
     sys.pressure = lerp(sys.pressure,targetPressure,(sys.pressure>targetPressure?0.05:0.08)*tropicalness);
     sys.pressure -= random(-3,3.5)*nontropicalness;
