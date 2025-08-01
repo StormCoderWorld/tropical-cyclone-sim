@@ -1173,7 +1173,7 @@ ENV_DEFS.defaults.SST = {
         let pspt = u.modifiers.peakSeasonPolarTemp;
         let ostt = u.modifiers.offSeasonTropicsTemp;
         let pstt = u.modifiers.peakSeasonTropicsTemp;
-        let t = lerp(map(s,-1,0.67,ospt,pspt), map(s,-1,1.1,ostt,pstt),h);
+        let t = lerp(map(s,-1.15,0.5,ospt,pspt), map(s,-1,1.15,ostt,pstt),h);
         return t+anom;
     }, 
 
@@ -1457,7 +1457,7 @@ ENV_DEFS.defaults.moisture = {
         let pm = u.modifiers.polarMoisture;
         let tm = u.modifiers.tropicalMoisture;
         let mm = u.modifiers.mountainMoisture;
-        let m = map(l,0.52,0.75,map(y,0,HEIGHT,pm,tm),mm,true);
+        let m = map(l,0.53,0.8,map(y,0,HEIGHT,pm,tm),mm,true);
         m += map(s,-1,1,-0.15,0.2);
         m += map(v,0,1,-0.3,0.3);
         m = constrain(m,0,1);
@@ -1546,9 +1546,9 @@ ENV_DEFS[SIM_MODE_EasternHemisphere].moisture = {
 };
 ENV_DEFS[SIM_MODE_NorthAtlantic].moisture = {
     modifiers: {
-        polarMoisture: 0.4,
-        tropicalMoisture: 0.58,
-        mountainMoisture: 0.1
+        polarMoisture: 0.36,
+        tropicalMoisture: 0.6,
+        mountainMoisture: 0.18
     }
 };
 ENV_DEFS[SIM_MODE_SouthAtlantic].moisture = {
