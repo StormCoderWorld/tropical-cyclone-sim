@@ -1,5 +1,3 @@
-
-2678 lines (2517 loc) · 101 KB
 class UI{
     constructor(parent,x,y,w,h,renderer,onclick,showing){
         if(parent instanceof UI){
