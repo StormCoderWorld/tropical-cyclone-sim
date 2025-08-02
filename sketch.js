@@ -5,7 +5,7 @@ var paused,
     waitingDescs,
     waitingTCSymbolSHem,
     simSettings,
-    textInput,
+    // textInput,
     buffers,
     scaler,
     tracks,
@@ -44,15 +44,15 @@ function setup(){
     waitingTCSymbolSHem = false; // yes seriously, a global var for this
     simSettings = new Settings();
 
-    textInput = document.createElement("input");
-    textInput.type = "text";
-    document.body.appendChild(textInput);
-    textInput.style.position = "absolute";
-    textInput.style.left = "-500px";
-    textInput.onblur = ()=>{
-        if(UI.focusedInput) UI.focusedInput.value = textInput.value;
-        UI.focusedInput = undefined;
-    };
+    // textInput = document.createElement("input");
+    // textInput.type = "text";
+    // document.body.appendChild(textInput);
+    // textInput.style.position = "absolute";
+    // textInput.style.left = "-500px";
+    // textInput.onblur = ()=>{
+    //     if(UI.focusedInput) UI.focusedInput.value = textInput.value;
+    //     UI.focusedInput = undefined;
+    // };
 
     // landWorker = new CSWorker();
 
@@ -65,9 +65,11 @@ function setup(){
     stormIcons = createBuffer();
     stormIcons.strokeWeight(3);
     forecastTracks = createBuffer();
-    forecastTracks.strokeWeight(2);
-    forecastTracks.stroke(240,240,0);
-    forecastTracks.noFill();
+    // forecastTracks.strokeWeight(2);
+    // forecastTracks.stroke(240,240,0);
+    // forecastTracks.noFill();
+    forecastTracks.noStroke();
+    forecastTracks.fill(255);
     landBuffer = createImage(fullW,fullH);
     landBuffer.loadPixels();
     // landBuffer.noStroke();
@@ -132,21 +134,12 @@ function draw(){
                     UI.viewBasin.advanceSim(delta);
                     lastUpdateTimestamp += delta * step;
                 }
-                keyRepeatFrameCounter++;
-                if(keyIsPressed && document.activeElement!==textInput && (keyRepeatFrameCounter>=KEY_REPEAT_COOLDOWN || keyRepeatFrameCounter===0) && keyRepeatFrameCounter%KEY_REPEATER===0){
-                    if(paused && primaryWrapper.showing){
-                        if(keyCode===LEFT_ARROW && viewTick>=ADVISORY_TICKS){
-                            changeViewTick(ceil(viewTick/ADVISORY_TICKS-1)*ADVISORY_TICKS);
-                        }else if(keyCode===RIGHT_ARROW){
-                            let t;
-                            if(viewTick<UI.viewBasin.tick-ADVISORY_TICKS) t = floor(viewTick/ADVISORY_TICKS+1)*ADVISORY_TICKS;
-                            else t = UI.viewBasin.tick;
-                            changeViewTick(t);
-                        }
-                    }
-                }
                 if((mouseX!==oldMouseX || mouseY!==oldMouseY) && simSettings.showMagGlass) UI.viewBasin.env.updateMagGlass();
             }
+
+            keyRepeatFrameCounter++;
+            if(keyIsPressed /* && document.activeElement!==textInput */ && (keyRepeatFrameCounter>=KEY_REPEAT_COOLDOWN || keyRepeatFrameCounter===0) && keyRepeatFrameCounter%KEY_REPEATER===0)
+                keyRepeat();
         
             UI.updateMouseOver();
             UI.renderAll();
